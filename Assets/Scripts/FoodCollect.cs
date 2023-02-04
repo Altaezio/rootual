@@ -7,7 +7,8 @@ public class FoodCollect : MonoBehaviour
     private FirstPersonMovement firstPersonMovement;
     public List<GameObject> foodObject = new List<GameObject>();
     public GameObject foodPocket;
-    [SerializeField] private float load = 30;
+    [SerializeField] private float load;
+    private float maxLoad = 30;
     private float timer = 0f;
     private bool holdingMouse = false;
     public AudioClip sound;
@@ -18,6 +19,7 @@ public class FoodCollect : MonoBehaviour
     {
         firstPersonMovement = GetComponent<FirstPersonMovement>();
         audioSource = GetComponent<AudioSource>();
+        load = maxLoad;
     }
 
     // Update is called once per frame
@@ -102,7 +104,7 @@ public class FoodCollect : MonoBehaviour
     private void calculateSpeed(float foodLoad)
     {
         load += foodLoad;
-        float speed = (4*load)/30 + 1;
+        float speed = ((firstPersonMovement.getDefaultSpeed() - 1)*load)/maxLoad + 1;
         firstPersonMovement.updateSpeed(speed);
     }
 }
