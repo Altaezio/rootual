@@ -63,12 +63,13 @@ public class FoodCollect : MonoBehaviour
         if (context.canceled)
         {
             StopCoroutine(nameof(Collecting));
-            if(foodAtRange){
+            if (foodAtRange)
+            {
                 foodInRange.GetComponent<FoodProperties>().StoppedCollected();
             }
         }
 
-            if (!foodAtRange) return;
+        if (!foodAtRange) return;
 
         if (context.performed)
             StartCoroutine(nameof(Collecting));
@@ -78,25 +79,21 @@ public class FoodCollect : MonoBehaviour
     {
         FoodProperties foodProperties = foodInRange.GetComponent<FoodProperties>();
         float newFoodWeight = foodProperties.Weight;
-        float newCollectTime = foodProperties.CollectTime;
 
         if (currentLoad - newFoodWeight < 0) yield break;
 
         foodProperties.IsCollected();
 
-        while (foodAtRange && newCollectTime>= 0)
-        {
-            newCollectTime -= Time.deltaTime;
-            yield return new WaitForSeconds(Time.deltaTime);
-        }
+        yield return new WaitForSeconds(foodProperties.CollectTime);
 
         foodProperties.StoppedCollected();
 
-        if(foodAtRange){
+        if (foodAtRange)
+        {
             foodObject.Add(foodInRange);
             foodInRange.SetActive(false);
             foodInRange.transform.parent = foodPocket.transform;
-            
+
             CalculateSpeed(-newFoodWeight);
         }
     }
