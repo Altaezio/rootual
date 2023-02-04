@@ -2,23 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
 {
     public float DefaultMoveSpeed;
+    public float MinMoveSpeed;
     
     [SerializeField]
     private Rigidbody rb;
     [SerializeField]
     private float rotationSpeed;
 
-    private float currentMoveSpeed;
+    [SerializeField] private float currentMoveSpeed;
     private Vector2 move;
     private float rotation;
+    private bool isRunning;
+    private float runningRate = 1.5f;
 
     private void Start()
     {
+        Cursor.visible = false;
+        isRunning = false;
         currentMoveSpeed = DefaultMoveSpeed;
     }
 
@@ -38,13 +42,22 @@ public class PlayerMovement : MonoBehaviour
         rotation = context.ReadValue<Vector2>().x;
     }
 
-    public void Fire(InputAction.CallbackContext context)
-    {
-        Debug.Log("FEUUUU");
-    }
-
     public void UpdateMoveSpeed(float newSpeed)
     {
         currentMoveSpeed = newSpeed;
+    }
+
+    public void Running(InputAction.CallbackContext context)
+    {
+        if (!isRunning && context.performed){
+            currentMoveSpeed *= runningRate;
+            isRunning = true;
+        }
+
+        if (context.canceled && isRunning)
+        {
+            currentMoveSpeed /= runningRate;
+            isRunning = false;
+        }
     }
 }

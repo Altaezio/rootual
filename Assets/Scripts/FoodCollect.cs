@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class FoodCollect : MonoBehaviour
 {
@@ -20,20 +21,22 @@ public class FoodCollect : MonoBehaviour
     private float currentLoad;
     private bool foodAtRange;
     private GameObject foodInRange;
+    public GameObject fillFoodBar;
 
     private void Start()
     {
         currentLoad = maxLoad;
     }
 
-    public void DropFood()
+    public void DropFood(InputAction.CallbackContext context)
     {
-        if (foodObject.Count == 0) return;
+        if (foodObject.Count == 0 || !context.performed) return;
         GameObject lastFood = foodObject[^1];
         float lastFoodWeight = lastFood.GetComponent<FoodProperties>().Weight;
 
         //lastFood.transform.localPosition = Vector3.zero; maybe to change position when you drop
         lastFood.transform.parent = null;
+        lastFood.GetComponent<Rigidbody>().isKinematic = false;
         lastFood.SetActive(true);
         foodObject.Remove(lastFood);
 
@@ -54,6 +57,7 @@ public class FoodCollect : MonoBehaviour
         if (other.CompareTag("food"))
         {
             foodAtRange = false;
+            foodInRange.GetComponent<FoodProperties>().StoppedCollected();
             foodInRange = null;
         }
     }
@@ -84,11 +88,7 @@ public class FoodCollect : MonoBehaviour
 
         foodProperties.IsCollected();
 
-        while (foodAtRange && newCollectTime>= 0)
-        {
-            newCollectTime -= Time.deltaTime;
-            yield return new WaitForSeconds(Time.deltaTime);
-        }
+        yield return new WaitForSeconds(newCollectTime);
 
         foodProperties.StoppedCollected();
 
@@ -96,6 +96,8 @@ public class FoodCollect : MonoBehaviour
             foodObject.Add(foodInRange);
             foodInRange.SetActive(false);
             foodInRange.transform.parent = foodPocket.transform;
+            foodInRange.transform.position = foodPocket.transform.position;
+            foodInRange.GetComponent<Rigidbody>().isKinematic = true;
             
             CalculateSpeed(-newFoodWeight);
         }
@@ -104,7 +106,8 @@ public class FoodCollect : MonoBehaviour
     private void CalculateSpeed(float foodLoad)
     {
         currentLoad += foodLoad;
-        float speed = (((playerMovement.DefaultMoveSpeed - 1) * currentLoad) / maxLoad + 1) / 30;
+        fillFoodBar.GetComponent<Image>().fillAmount = 1 - (currentLoad/maxLoad);
+        float speed = (((playerMovement.DefaultMoveSpeed - playerMovement.MinMoveSpeed) * currentLoad) / maxLoad + playerMovement.MinMoveSpeed);
         playerMovement.UpdateMoveSpeed(speed);
     }
 }
