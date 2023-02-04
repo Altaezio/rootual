@@ -4,7 +4,19 @@ using UnityEngine;
 
 public class PerlinNoise : MonoBehaviour
 {
-    public GameObject[] objectPrefabs;
+    [SerializeField]
+    private List<GameObject> bigTrees;
+    [SerializeField]
+    private List<GameObject> trees;
+    [SerializeField]
+    private List<GameObject> buisson;
+    [SerializeField]
+    private List<GameObject> nothing;
+    [SerializeField]
+    private List<GameObject> eau;
+
+    private List<List<GameObject>> objectPrefabs = new();
+
     public GameObject village;
     public int villageWidth;
     public int[,] matrixMap;
@@ -12,9 +24,15 @@ public class PerlinNoise : MonoBehaviour
     private int seed;
     public int width = 20;
     public float defaultInstantiateThreshold = 0.5f;
-    
+
     private void Start()
     {
+        objectPrefabs.Add(bigTrees);
+        objectPrefabs.Add(trees);
+        objectPrefabs.Add(buisson);
+        objectPrefabs.Add(nothing);
+        objectPrefabs.Add(eau);
+
         matrixMap = new int[width, width];
         villageWidth = 10;
 
@@ -27,13 +45,13 @@ public class PerlinNoise : MonoBehaviour
             for (int z = 0; z < width; z++)
             {
                 float noise = Mathf.PerlinNoise((x + seed) / scale, (z + seed) / scale);
-                int objectIndex = Mathf.Clamp(Mathf.FloorToInt(noise * objectPrefabs.Length), 0, objectPrefabs.Length-1);
-                Debug.Log(objectIndex);
-                matrixMap[x,z] = objectIndex;
-                GameObject objectPrefab = objectPrefabs[objectIndex];
+                int objectIndex = Mathf.Clamp(Mathf.FloorToInt(noise * objectPrefabs.Count), 0, objectPrefabs.Count - 1);
+                matrixMap[x, z] = objectIndex;
+                List<GameObject> objects = objectPrefabs[objectIndex];
+                GameObject objectPrefab = objects[Random.Range(0, objects.Count)];
 
                 Vector3 position = new Vector3(x, 0, z);
-                
+
                 float probability = Random.Range(0.0f, 1.0f);
                 float instantiateThreshold;
 
@@ -42,10 +60,12 @@ public class PerlinNoise : MonoBehaviour
                     case 3:
                         instantiateThreshold = 1.0f;
                         break;
-                    case 0: case 6:
+                    case 0:
+                    case 6:
                         instantiateThreshold = 0.5f;
                         break;
-                    case 2: case 4:
+                    case 2:
+                    case 4:
                         instantiateThreshold = 0.25f;
                         break;
                     default:
@@ -53,19 +73,21 @@ public class PerlinNoise : MonoBehaviour
                         break;
                 }
 
-                if(probability > 1 - instantiateThreshold){
+                if (probability > 1 - instantiateThreshold)
+                {
                     GameObject clone = Instantiate(objectPrefab, position, Quaternion.identity);
-                    if(Random.Range(0.0f, 1.0f) > 0.2f)
+                    if (Random.Range(0.0f, 1.0f) > 0.2f)
                     {
                         try
                         {
                             GameObject child = clone.transform.GetChild(0).gameObject;
-                            if(child.CompareTag("food")){
+                            if (child.CompareTag("food"))
+                            {
                                 Destroy(child);
                             }
                         }
-                        catch (System.Exception){ }
-                    } 
+                        catch (System.Exception) { }
+                    }
                 }
             }
         }
@@ -76,19 +98,19 @@ public class PerlinNoise : MonoBehaviour
 
         int nTest = width;
 
-        for (int i = 0; i < nTest*nTest; i++)
+        for (int i = 0; i < nTest * nTest; i++)
         {
             int randX = Random.Range(0, width - villageWidth);
             int randZ = Random.Range(0, width - villageWidth);
 
             int sum = 0;
-            
-            for(int x = randX; x < randX + villageWidth; x++)
+
+            for (int x = randX; x < randX + villageWidth; x++)
             {
-                for(int z = randZ; z < randZ + villageWidth; z++)
+                for (int z = randZ; z < randZ + villageWidth; z++)
                 {
                     // Debug.Log("Test");
-                    if(matrixMap[x,z] == 3)
+                    if (matrixMap[x, z] == 3)
                     {
                         sum += 1;
                         // Debug.Log(sum);
@@ -96,7 +118,7 @@ public class PerlinNoise : MonoBehaviour
                 }
             }
 
-            if(sum > best)
+            if (sum > best)
             {
                 best = sum;
                 bestX = randX;
@@ -106,8 +128,8 @@ public class PerlinNoise : MonoBehaviour
 
         Instantiate(village, new Vector3(bestX + villageWidth, 0, bestZ + villageWidth), Quaternion.identity);
 
-        Debug.Log("best : " + best);
-        Debug.Log("x : " + bestX);
-        Debug.Log("z : " + bestZ);
+        //Debug.Log("best : " + best);
+        //Debug.Log("x : " + bestX);
+        //Debug.Log("z : " + bestZ);
     }
 }
