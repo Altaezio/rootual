@@ -4,22 +4,19 @@ using UnityEngine;
 
 public class FoodProperties : MonoBehaviour
 {
-    public float weight = 1;
-    public float collectTime = 2;
+    public float Weight;
+    public float CollectTime;
 
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private AudioSource audioSource;
+
+    public void IsCollected()
     {
-
+        audioSource.Play();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void StoppedCollected()
     {
-        
+        audioSource.Stop();
     }
-
-    public float getWeight(){ return weight; }
-
-    public float getCollectTime(){ return collectTime; }
 }
