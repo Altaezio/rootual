@@ -5,13 +5,13 @@ using UnityEngine.InputSystem;
 
 public class KillingTest : MonoBehaviour
 {
-    public bool playerInRange { get; private set; }
+    public bool PlayerInRange { get; private set; }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            playerInRange = true;
+            PlayerInRange = true;
             SetControllerVibration.lowFrequency = .5f;
         }
     }
@@ -19,7 +19,7 @@ public class KillingTest : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            playerInRange = false;
+            PlayerInRange = false;
             SetControllerVibration.lowFrequency = 0;
         }
     }

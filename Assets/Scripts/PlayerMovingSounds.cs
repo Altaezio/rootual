@@ -7,63 +7,46 @@ using UnityEngine.InputSystem;
 public class PlayerMovingSounds : MonoBehaviour
 {
     [SerializeField]
-    private AudioSource audioSource;
+    private AudioSource walk;
     [SerializeField]
-    private AudioClip walk;
+    private AudioSource heartBeat;
     [SerializeField]
-    private AudioClip heartBeat;
+    private float maxVolumeWalk;
     [SerializeField]
-    private float maxVolume;
+    private float maxVolumeHeart;
     [SerializeField]
-    private float fadeDuration;
-
+    private float minVolumeWalk;
     [SerializeField]
-    private float targetVolume;
-    private bool isWalkPlaying;
-
-    private void Start()
-    {
-        isWalkPlaying = false;
-        StartCoroutine(PermanentFade());
-    }
+    private float minVolumeHeart;
+    [SerializeField]
+    private float fadeInDurationWalk;
+    [SerializeField]
+    private float fadeInDurationHeart;
+    [SerializeField]
+    private float fadeOutDurationWalk;
+    [SerializeField]
+    private float fadeOutDurationHeart;
 
     public void IsMoving(InputAction.CallbackContext context)
     {
         Vector2 move = context.ReadValue<Vector2>();
-        if (audioSource != null)
+        if (move == Vector2.zero)
         {
-            if (move == Vector2.zero)
-            {
-                if (isWalkPlaying)
-                    StopCoroutine(Swap());
-                StartCoroutine(Swap());
-            }
-            else
-            {
-                if (!isWalkPlaying)
-                    StopCoroutine(Swap());
-                StartCoroutine(Swap());
-            }
+            StopFadings();
+            StartCoroutine(FadeOutSound.StartFade(walk, fadeOutDurationWalk, minVolumeWalk));
+            StartCoroutine(FadeOutSound.StartFade(heartBeat, fadeInDurationHeart, maxVolumeHeart));
+        }
+        else
+        {
+            StopFadings();
+            StartCoroutine(FadeOutSound.StartFade(walk, fadeInDurationWalk, maxVolumeWalk));
+            StartCoroutine(FadeOutSound.StartFade(heartBeat, fadeOutDurationHeart, minVolumeHeart));
         }
     }
 
-    private IEnumerator PermanentFade()
+    private void StopFadings()
     {
-        while (true)
-        {
-            audioSource.volume = Mathf.Lerp(audioSource.volume, targetVolume, Time.deltaTime / fadeDuration);
-            yield return new WaitForSeconds(Time.deltaTime);
-        }
-    }
-
-    private IEnumerator Swap()
-    {
-        targetVolume = 0;
-        while (audioSource.volume > 0)
-        {
-            yield return new WaitForSeconds(.5f);
-        }
-        audioSource.clip = isWalkPlaying ? heartBeat : walk;
-        targetVolume = maxVolume;
+        StopCoroutine(nameof(FadeOutSound.StartFade));
+        StopCoroutine(nameof(FadeOutSound.StartFade));
     }
 }

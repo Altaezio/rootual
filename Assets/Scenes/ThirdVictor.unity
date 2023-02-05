@@ -1556,13 +1556,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 4375f6b9fc208c44184d1df524dcc8cd, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.05
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 161
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -2049,6 +2049,7 @@ GameObject:
   - component: {fileID: 2007078881}
   - component: {fileID: 2007078882}
   - component: {fileID: 2007078874}
+  - component: {fileID: 2007078883}
   m_Layer: 11
   m_Name: Mr Propre
   m_TagString: Untagged
@@ -2066,9 +2067,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 679769f3fb63ab74caf59fe8bd1167f9, type: 3}
+  m_audioClip: {fileID: 8300000, guid: ef161fedf90b6a44b9aa2773f088c526, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.7
+  m_Volume: 0
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2425,12 +2426,112 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf7776423e080a240a9a1b2ec11b1684, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 2007078874}
-  walk: {fileID: 8300000, guid: ef161fedf90b6a44b9aa2773f088c526, type: 3}
-  heartBeat: {fileID: 8300000, guid: 679769f3fb63ab74caf59fe8bd1167f9, type: 3}
-  maxVolume: 0.7
-  fadeDuration: 0.7
-  targetVolume: 1
+  walk: {fileID: 2007078874}
+  heartBeat: {fileID: 2007078883}
+  maxVolumeWalk: 0.8
+  maxVolumeHeart: 0.5
+  minVolumeWalk: 0
+  minVolumeHeart: 0.05
+  fadeInDurationWalk: 0.5
+  fadeInDurationHeart: 1
+  fadeOutDurationWalk: 0.7
+  fadeOutDurationHeart: 1
+--- !u!82 &2007078883
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2007078873}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 679769f3fb63ab74caf59fe8bd1167f9, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.7
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2043582747
 GameObject:
   m_ObjectHideFlags: 0

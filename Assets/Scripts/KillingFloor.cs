@@ -23,7 +23,7 @@ public class KillingFloor : MonoBehaviour
     private KillingTest testIfAtRange;
 
     private bool onCoolDown;
-    private bool isAtRange { get => testIfAtRange.playerInRange; }
+    private bool isAtRange { get => testIfAtRange.PlayerInRange; }
 
     private void Start()
     {
