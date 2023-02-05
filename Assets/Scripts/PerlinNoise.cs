@@ -27,6 +27,8 @@ public class PerlinNoise : MonoBehaviour
     private int seed;
     public int width = 20;
     public float defaultInstantiateThreshold = 0.5f;
+    public GameObject rescueZone;
+    public GameObject playerSpawn;
     
 
     private void Start()
@@ -101,11 +103,9 @@ public class PerlinNoise : MonoBehaviour
             {
                 for (int z = randZ; z < randZ + villageWidth; z++)
                 {
-                    // Debug.Log("Test");
                     if (matrixMap[x, z] == 3)
                     {
                         sum += 1;
-                        // Debug.Log(sum);
                     }
                 }
             }
@@ -118,6 +118,7 @@ public class PerlinNoise : MonoBehaviour
             }
         }
 
-        Instantiate(village, new Vector3(bestX + villageWidth, 0, bestZ + villageWidth), Quaternion.identity);
+        rescueZone.transform.position = new Vector3(bestX, 0, bestZ);
+        playerSpawn.transform.position = new Vector3(bestX, 0, bestZ);
     }
 }

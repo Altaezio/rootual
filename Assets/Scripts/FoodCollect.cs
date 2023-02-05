@@ -18,7 +18,7 @@ public class FoodCollect : MonoBehaviour
     [SerializeField]
     private float maxLoad;
 
-    private float currentLoad;
+    public float currentLoad;
     private bool foodAtRange;
     private GameObject foodInRange;
     public GameObject fillFoodBar;
@@ -37,6 +37,7 @@ public class FoodCollect : MonoBehaviour
         //lastFood.transform.localPosition = Vector3.zero; maybe to change position when you drop
         lastFood.transform.parent = null;
         lastFood.GetComponent<Rigidbody>().isKinematic = false;
+        lastFood.GetComponent<FoodProperties>().CollectTime = 0.5f;
         lastFood.SetActive(true);
         foodObject.Remove(lastFood);
 
@@ -56,8 +57,8 @@ public class FoodCollect : MonoBehaviour
     {
         if (other.CompareTag("food"))
         {
-            foodAtRange = false;
             foodInRange.GetComponent<FoodProperties>().StoppedCollected();
+            foodAtRange = false;
             foodInRange = null;
         }
     }

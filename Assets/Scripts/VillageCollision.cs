@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class VillageCollision : MonoBehaviour
 {
@@ -14,5 +15,13 @@ public class VillageCollision : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("Player") && other.gameObject.GetComponent<FoodCollect>().currentLoad == 0)
+        {
+            SceneManager.LoadScene(2);
+        }
     }
 }
