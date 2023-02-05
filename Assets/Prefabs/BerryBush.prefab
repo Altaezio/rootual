@@ -827,7 +827,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea8f20688a55aa41b2245d18de007fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Weight: 2
+  Weight: 0.5
   CollectTime: 2
   collectBar: {fileID: 0}
   collectBarAnim: {fileID: 0}
@@ -843,7 +843,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: b29ba05d4e540c94ca8b611c131e947b, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 0c4c718d164583444b8963780c1585ac, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.7
   m_Pitch: 1

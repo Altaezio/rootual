@@ -1022,6 +1022,8 @@ MonoBehaviour:
   scale: 10
   width: 75
   defaultInstantiateThreshold: 0.2
+  rescueZone: {fileID: 0}
+  playerSpawn: {fileID: 0}
 --- !u!1 &1139378998
 GameObject:
   m_ObjectHideFlags: 0
@@ -1228,9 +1230,9 @@ GameObject:
   - component: {fileID: 1476983364}
   - component: {fileID: 1476983363}
   - component: {fileID: 1476983370}
-  - component: {fileID: 1476983369}
-  - component: {fileID: 1476983372}
   - component: {fileID: 1476983371}
+  - component: {fileID: 1476983372}
+  - component: {fileID: 1476983369}
   m_Layer: 6
   m_Name: Mr Racine
   m_TagString: Untagged
@@ -2170,6 +2172,7 @@ MonoBehaviour:
   playerMovement: {fileID: 2007078876}
   audioSource: {fileID: 2007078874}
   maxLoad: 30
+  currentLoad: 0
   fillFoodBar: {fileID: 1325842196}
 --- !u!114 &2007078876
 MonoBehaviour:

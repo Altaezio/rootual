@@ -534,7 +534,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Weight: 2
-  CollectTime: 2
+  CollectTime: 6
   collectBar: {fileID: 0}
   collectBarAnim: {fileID: 0}
   audioSource: {fileID: 7645451163061153204}
@@ -549,7 +549,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: b29ba05d4e540c94ca8b611c131e947b, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 285aba939f959dc4a94a8d9e81d5f937, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.7
   m_Pitch: 1
