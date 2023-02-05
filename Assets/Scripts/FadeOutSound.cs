@@ -6,7 +6,6 @@ public class FadeOutSound : MonoBehaviour
 {
     public static IEnumerator StartFade(AudioSource audioSource, float duration, float targetVolume)
     {
-        Debug.Log($"Start fade to {targetVolume} in {duration}");
         float currentTime = 0;
         float start = audioSource.volume;
         while (currentTime < duration)

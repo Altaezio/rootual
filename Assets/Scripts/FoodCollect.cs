@@ -9,7 +9,6 @@ public class FoodCollect : MonoBehaviour
 {
     public List<GameObject> foodObject = new List<GameObject>();
     public GameObject foodPocket;
-    public AudioClip sound;
 
     [SerializeField]
     private PlayerMovement playerMovement;
@@ -57,7 +56,8 @@ public class FoodCollect : MonoBehaviour
         if (other.CompareTag("food"))
         {
             foodAtRange = false;
-            foodInRange.GetComponent<FoodProperties>().StoppedCollected();
+            if (foodInRange != null)
+                foodInRange.GetComponent<FoodProperties>().StoppedCollected();
             foodInRange = null;
         }
     }
@@ -88,7 +88,7 @@ public class FoodCollect : MonoBehaviour
 
         foodProperties.IsCollected();
 
-        yield return new WaitForSeconds(foodProperties.CollectTime);
+        yield return new WaitForSecondsRealtime(foodProperties.CollectTime);
 
         foodProperties.StoppedCollected();
 
@@ -99,7 +99,7 @@ public class FoodCollect : MonoBehaviour
             foodInRange.transform.parent = foodPocket.transform;
             foodInRange.transform.position = foodPocket.transform.position;
             foodInRange.GetComponent<Rigidbody>().isKinematic = true;
-            
+
             CalculateSpeed(-newFoodWeight);
         }
     }
@@ -107,7 +107,7 @@ public class FoodCollect : MonoBehaviour
     private void CalculateSpeed(float foodLoad)
     {
         currentLoad += foodLoad;
-        fillFoodBar.GetComponent<Image>().fillAmount = 1 - (currentLoad/maxLoad);
+        fillFoodBar.GetComponent<Image>().fillAmount = 1 - (currentLoad / maxLoad);
         float speed = (((playerMovement.DefaultMoveSpeed - playerMovement.MinMoveSpeed) * currentLoad) / maxLoad + playerMovement.MinMoveSpeed);
         playerMovement.UpdateMoveSpeed(speed);
     }
