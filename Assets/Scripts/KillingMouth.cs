@@ -9,6 +9,8 @@ public class KillingMouth : MonoBehaviour
         if(other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             Debug.Log("AIR KO");
+            SetControllerVibration.hightFrequency = 0;
+            SetControllerVibration.lowFrequency = 0;
             other.GetComponent<LifeManagment>().Lives -= 1;
         }
     }

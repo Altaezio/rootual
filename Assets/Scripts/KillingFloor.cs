@@ -9,8 +9,21 @@ public class KillingFloor : MonoBehaviour
     private GameObject killingMouth;
     [SerializeField]
     private float coolDown;
+    [SerializeField]
+    private float attackTime;
+    [SerializeField]
+    private AudioSource attack;
+    [SerializeField]
+    private AudioSource missedAttack;
+    [SerializeField]
+    private AudioSource coolDownBack;
+    [SerializeField]
+    private AudioSource coolDownNotBack;
+    [SerializeField]
+    private KillingTest testIfAtRange;
 
     private bool onCoolDown;
+    private bool isAtRange { get => testIfAtRange.PlayerInRange; }
 
     private void Start()
     {
@@ -20,7 +33,12 @@ public class KillingFloor : MonoBehaviour
 
     public void Eat(InputAction.CallbackContext context)
     {
-        if (onCoolDown || !context.performed) return;
+        if (!context.performed) return;
+        if (onCoolDown)
+        {
+            coolDownNotBack.Play();
+            return;
+        }
         TryToEat();
     }
 
@@ -28,13 +46,20 @@ public class KillingFloor : MonoBehaviour
     {
         onCoolDown = true;
         killingMouth.SetActive(true);
+        if (isAtRange)
+            attack.Play();
+        else
+            missedAttack.Play();
+
         StartCoroutine(CoolDown());
     }
 
     private IEnumerator CoolDown()
     {
+        yield return new WaitForSeconds(attackTime);
         killingMouth.SetActive(false);
-        yield return new WaitForSeconds(coolDown);
+        yield return new WaitForSeconds(coolDown - attackTime);
         onCoolDown = false;
+        coolDownBack.Play();
     }
 }

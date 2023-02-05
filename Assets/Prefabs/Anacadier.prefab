@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1724825654543170440}
   - component: {fileID: 2968354858974080585}
   m_Layer: 0
-  m_Name: Tree
+  m_Name: Anacadier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 3321064868862741035}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 2.5, z: 0}
-  m_LocalScale: {x: 0.5, y: 2.5, z: 0.5}
+  m_LocalScale: {x: 0.5, y: 1.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5302715299271900944}
@@ -158,7 +158,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.5
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -241,9 +241,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3321064869531905252}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.3959999, z: 0}
-  m_LocalScale: {x: 5, y: 1, z: 5}
-  m_ConstrainProportionsScale: 1
+  m_LocalPosition: {x: 0, y: 1.22, z: 0}
+  m_LocalScale: {x: 6, y: 1.3, z: 6}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3321064868862741039}
   m_RootOrder: 1
@@ -328,7 +328,7 @@ GameObject:
   - component: {fileID: 3296620772423020170}
   - component: {fileID: 694826547231155281}
   m_Layer: 0
-  m_Name: Banana
+  m_Name: Noix
   m_TagString: food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -342,9 +342,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6480776508153756816}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.6, y: 0.878, z: -0.87}
-  m_LocalScale: {x: 0.8834999, y: 0.1767, z: 0.8834999}
-  m_ConstrainProportionsScale: 1
+  m_LocalPosition: {x: 0.61, y: 0.54, z: -1.72}
+  m_LocalScale: {x: 1, y: 0.3, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3321064868862741039}
   m_RootOrder: 0
@@ -422,10 +422,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 1.5
-  m_Height: 12.063786
+  m_Radius: 2.25
+  m_Height: 7.572693
   m_Direction: 1
-  m_Center: {x: 0, y: -5.031893, z: 0}
+  m_Center: {x: 0, y: -2.6, z: 0}
 --- !u!114 &3032154138548390758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -438,8 +438,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea8f20688a55aa41b2245d18de007fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Weight: 0
-  CollectTime: 10
+  Weight: 1
+  CollectTime: 4
   collectBar: {fileID: 0}
   collectBarAnim: {fileID: 0}
   audioSource: {fileID: 3296620772423020170}
@@ -454,7 +454,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 651f24e0c1dd92342b9a62413d6ac7cc, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c7413a95d06ede04998be6e0910342fa, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.7
   m_Pitch: 1

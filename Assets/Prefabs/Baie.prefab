@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9089328876615829678}
   - component: {fileID: 9089328876615829675}
   m_Layer: 0
-  m_Name: Buisson
+  m_Name: Baie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -130,8 +130,8 @@ Transform:
   m_GameObject: {fileID: 9089328877397889690}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 0.3, y: 1.2, z: 0.3}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 0.3, y: 1.25, z: 0.3}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9089328876615829676}
   m_RootOrder: 0
@@ -211,8 +211,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea8f20688a55aa41b2245d18de007fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Weight: 1
-  CollectTime: 1
+  Weight: 0.5
+  CollectTime: 2
   collectBar: {fileID: 0}
   collectBarAnim: {fileID: 0}
   audioSource: {fileID: 6427065662218047396}
@@ -228,7 +228,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!82 &6427065662218047396
 AudioSource:
@@ -240,7 +240,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 026914bf2787aa346bbfaee9a69ab857, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 0c4c718d164583444b8963780c1585ac, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.7
   m_Pitch: 1
