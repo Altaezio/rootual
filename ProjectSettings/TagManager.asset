@@ -15,7 +15,7 @@ TagManager:
   - Root
   - Wall
   - Killing
-  - 
+  - KillingTest
   - Food
   - Player
   - Limit
