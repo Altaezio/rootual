@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -56,7 +55,7 @@ public class FoodCollect : MonoBehaviour
     {
         if (other.CompareTag("food"))
         {
-            foodInRange.GetComponent<FoodProperties>().StoppedCollected();
+            // foodInRange.GetComponent<FoodProperties>().StoppedCollected();
             foodAtRange = false;
             if (foodInRange != null)
                 foodInRange.GetComponent<FoodProperties>().StoppedCollected();

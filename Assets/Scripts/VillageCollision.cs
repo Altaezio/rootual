@@ -17,11 +17,11 @@ public class VillageCollision : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if(other.gameObject.CompareTag("Player") && other.gameObject.GetComponent<FoodCollect>().currentLoad == 0)
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(3);
         }
     }
 }
