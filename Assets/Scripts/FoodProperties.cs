@@ -6,26 +6,34 @@ public class FoodProperties : MonoBehaviour
 {
     public float Weight;
     public float CollectTime;
-    public GameObject loadBar;
-    public Animator loadBarAnim;
+    [SerializeField] private GameObject collectBar;
+    [SerializeField] private Animator collectBarAnim;
 
     [SerializeField] private AudioSource audioSource;
+    [SerializeField] private float probabilityToAppear;
 
     void Start()
     {
+        GameObject parent = transform.root.gameObject;
+        collectBar = parent.GetComponent<PerlinNoise>().CollectBar;
+        collectBarAnim = parent.GetComponent<PerlinNoise>().CollectBarAnim;
 
+        if (Random.Range(0.0f, 1.0f) > probabilityToAppear)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     public void IsCollected()
     {
         audioSource.Play();
-        loadBarAnim.speed = 1/CollectTime;
-        loadBar.SetActive(true);
+        collectBarAnim.speed = 1/CollectTime;
+        collectBar.SetActive(true);
     }
 
     public void StoppedCollected()
     {
         audioSource.Stop();
-        loadBar.SetActive(false);
+        collectBar.SetActive(false);
     }
 }

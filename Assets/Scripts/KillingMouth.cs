@@ -8,7 +8,7 @@ public class KillingMouth : MonoBehaviour
     {
         if(other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            Debug.Log("KIIIILLLLL");
+            Debug.Log("AIR KO");
             other.GetComponent<LifeManagment>().Lives -= 1;
         }
     }

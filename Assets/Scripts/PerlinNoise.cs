@@ -14,6 +14,9 @@ public class PerlinNoise : MonoBehaviour
     private List<GameObject> nothing;
     [SerializeField]
     private List<GameObject> eau;
+    [SerializeField]
+    public GameObject CollectBar;
+    public Animator CollectBarAnim;
 
     private List<List<GameObject>> objectPrefabs = new();
 
@@ -24,6 +27,7 @@ public class PerlinNoise : MonoBehaviour
     private int seed;
     public int width = 20;
     public float defaultInstantiateThreshold = 0.5f;
+    
 
     private void Start()
     {
@@ -37,7 +41,7 @@ public class PerlinNoise : MonoBehaviour
         villageWidth = 10;
 
         seed = Random.Range(0, 10000);
-        Debug.Log(seed);
+        // Debug.Log(seed);
         Random.InitState(seed);
 
         for (int x = 0; x < width; x++)
@@ -75,19 +79,7 @@ public class PerlinNoise : MonoBehaviour
 
                 if (probability > 1 - instantiateThreshold)
                 {
-                    GameObject clone = Instantiate(objectPrefab, position, Quaternion.identity);
-                    if (Random.Range(0.0f, 1.0f) > 0.2f)
-                    {
-                        try
-                        {
-                            GameObject child = clone.transform.GetChild(0).gameObject;
-                            if (child.CompareTag("food"))
-                            {
-                                Destroy(child);
-                            }
-                        }
-                        catch (System.Exception) { }
-                    }
+                    GameObject clone = Instantiate(objectPrefab, position, Quaternion.identity, this.transform);
                 }
             }
         }
@@ -127,9 +119,5 @@ public class PerlinNoise : MonoBehaviour
         }
 
         Instantiate(village, new Vector3(bestX + villageWidth, 0, bestZ + villageWidth), Quaternion.identity);
-
-        //Debug.Log("best : " + best);
-        //Debug.Log("x : " + bestX);
-        //Debug.Log("z : " + bestZ);
     }
 }
