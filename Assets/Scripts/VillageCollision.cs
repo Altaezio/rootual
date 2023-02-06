@@ -21,7 +21,7 @@ public class VillageCollision : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player") && other.gameObject.GetComponent<FoodCollect>().currentLoad == 0)
         {
-            SceneManager.LoadScene(3);
+            SceneManager.LoadScene("PickerWin");
         }
     }
 }

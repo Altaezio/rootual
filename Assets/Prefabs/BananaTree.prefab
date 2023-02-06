@@ -1,37 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &767243552486539706
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 139078731998894848}
-  m_Layer: 0
-  m_Name: TreeLeaves
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &139078731998894848
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 767243552486539706}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.12, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 8191936719761304077}
-  m_Father: {fileID: 4059955542035111885}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1251048359647612086
 GameObject:
   m_ObjectHideFlags: 0
@@ -46,7 +14,7 @@ GameObject:
   - component: {fileID: 9150925108734410390}
   - component: {fileID: 8489535078450308568}
   m_Layer: 0
-  m_Name: Banane
+  m_Name: Bananes
   m_TagString: food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -104,6 +72,7 @@ MonoBehaviour:
   collectBarAnim: {fileID: 0}
   audioSource: {fileID: 9150925108734410390}
   probabilityToAppear: 0.2
+  collectingArea: {fileID: 8489535078450308568}
 --- !u!82 &9150925108734410390
 AudioSource:
   m_ObjectHideFlags: 0
@@ -209,7 +178,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 1251048359647612086}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 1
   m_Height: 4.33
   m_Direction: 1
@@ -227,7 +196,7 @@ GameObject:
   - component: {fileID: 9110341905028024120}
   - component: {fileID: 3453917274926845402}
   m_Layer: 0
-  m_Name: Cylinder
+  m_Name: Stick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -340,7 +309,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1880056539911411212}
-  - {fileID: 139078731998894848}
+  - {fileID: 8191936719761304077}
   - {fileID: 4059955542515707326}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -362,7 +331,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4059955542515707326
 Transform:
@@ -456,7 +425,7 @@ GameObject:
   - component: {fileID: 8185566258210041116}
   - component: {fileID: 1647520365695504616}
   m_Layer: 0
-  m_Name: Cylinder.002
+  m_Name: BananesBottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -553,7 +522,7 @@ GameObject:
   - component: {fileID: 1310885412153301598}
   - component: {fileID: 8398148260657136463}
   m_Layer: 0
-  m_Name: Cylinder.003
+  m_Name: BananesTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -650,11 +619,11 @@ GameObject:
   - component: {fileID: 5893011431854037393}
   - component: {fileID: 2745579804740213648}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Leaves
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &8191936719761304077
 Transform:
@@ -663,14 +632,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8626741974127928189}
-  m_LocalRotation: {x: -0.7071067, y: -0.000000030908616, z: 0.000000030908623, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 5.12, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 139078731998894848}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Father: {fileID: 4059955542035111885}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &7924356487068028302
 MeshFilter:
   m_ObjectHideFlags: 0

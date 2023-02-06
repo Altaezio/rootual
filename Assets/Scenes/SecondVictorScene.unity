@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028355, g: 0.22571374, b: 0.30692255, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -191,10 +191,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   foodObject: []
   foodPocket: {fileID: 131195866}
-  sound: {fileID: 8300000, guid: 50b288ce0d5ac1e439827c5365c74c31, type: 3}
   playerMovement: {fileID: 239879028}
   audioSource: {fileID: 239879033}
   maxLoad: 30
+  currentLoad: 0
+  fillFoodBar: {fileID: 0}
 --- !u!114 &239879028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,9 +209,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DefaultMoveSpeed: 0.1
+  MinMoveSpeed: 0
   rb: {fileID: 239879030}
   rotationSpeed: 1
-  audioSource: {fileID: 239879033}
 --- !u!114 &239879029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -872,7 +873,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &992405948
 Transform:
   m_ObjectHideFlags: 0
@@ -900,22 +901,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 832b62c1224037845ad4bc729881d326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bigTrees:
-  - {fileID: 3442807277972738522, guid: 281b14e25c3ab2f4e83d2b6133b8435a, type: 3}
-  trees:
-  - {fileID: 3321064868862741035, guid: b83bfdcded0bc2f4e9f66a15cd185a70, type: 3}
-  buisson:
-  - {fileID: 9089328876615829664, guid: 3848f928e6fd5ea4eb2078e9823647fc, type: 3}
-  - {fileID: 9089328876615829664, guid: 70045ed53e3e3a544a18cc54fcb0a9fc, type: 3}
+  bigPlants:
+  - {fileID: 4059955542035111884, guid: a80b8a117f571be45bae8273cd7790fc, type: 3}
+  middlePlants:
+  - {fileID: 9154248864046587238, guid: acc89d56ef948c04f957fe5f11651826, type: 3}
+  - {fileID: 3766785854093006347, guid: 970c600f3291d6c41ad711eb81269681, type: 3}
+  smallPlants:
+  - {fileID: 3698501321973686903, guid: 32bc01cb80be34646bbf085fa8da13fc, type: 3}
+  - {fileID: 4570238929483332627, guid: fb2c825103028f04b80fe7063467f7be, type: 3}
   nothing:
   - {fileID: 7887341697683655994, guid: 96de6f0365755e8478970975ac857bac, type: 3}
-  eau:
-  - {fileID: 7887341697683655994, guid: 96de6f0365755e8478970975ac857bac, type: 3}
-  village: {fileID: 404102198}
-  villageWidth: 0
+  CollectBar: {fileID: 0}
+  CollectBarAnim: {fileID: 0}
   scale: 10
   width: 50
   defaultInstantiateThreshold: 0.2
+  rescueZone: {fileID: 0}
+  mrPropre: {fileID: 0}
+  mrRacine: {fileID: 0}
 --- !u!1 &1181866357
 GameObject:
   m_ObjectHideFlags: 0
@@ -1057,9 +1060,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DefaultMoveSpeed: 0.1
+  MinMoveSpeed: 0
   rb: {fileID: 1411850442}
   rotationSpeed: 5
-  audioSource: {fileID: 0}
 --- !u!114 &1411850444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1219,6 +1222,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   killingMouth: {fileID: 2051178940}
   coolDown: 10
+  attackTime: 0
+  attack: {fileID: 0}
+  missedAttack: {fileID: 0}
+  coolDownBack: {fileID: 0}
+  coolDownNotBack: {fileID: 0}
+  testIfAtRange: {fileID: 0}
 --- !u!1 &1669340841
 GameObject:
   m_ObjectHideFlags: 0

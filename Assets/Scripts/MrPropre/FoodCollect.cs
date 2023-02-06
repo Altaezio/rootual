@@ -55,12 +55,15 @@ public class FoodCollect : MonoBehaviour
     {
         if (other.CompareTag("food"))
         {
-            // foodInRange.GetComponent<FoodProperties>().StoppedCollected();
-            foodAtRange = false;
-            if (foodInRange != null)
-                foodInRange.GetComponent<FoodProperties>().StoppedCollected();
-            foodInRange = null;
+            EndCollecting();
         }
+    }
+
+    private void EndCollecting(){
+        foodAtRange = false;
+        if (foodInRange != null)
+            foodInRange.GetComponent<FoodProperties>().StoppedCollected();
+        foodInRange = null;
     }
 
     public void Collect(InputAction.CallbackContext context)
@@ -102,6 +105,8 @@ public class FoodCollect : MonoBehaviour
             foodInRange.GetComponent<Rigidbody>().isKinematic = true;
 
             CalculateSpeed(-newFoodWeight);
+
+            EndCollecting();
         }
     }
 

@@ -24,7 +24,6 @@ public class LifeManagment : MonoBehaviour
     private IEnumerator GoToNextScene()
     {
         yield return new WaitForSeconds(2);
-        Debug.Log("Next scene");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("RootWin"); // SceneManager.GetActiveScene().buildIndex + 1
     }
 }

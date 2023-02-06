@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3959950215003305125}
   - component: {fileID: 6971126531764533240}
   m_Layer: 11
-  m_Name: Bras_Mei
+  m_Name: Bras
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 7907850178517486163}
   - component: {fileID: 8493631324560643546}
   m_Layer: 11
-  m_Name: Jambes_Mei
+  m_Name: Jambes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 1332321096265944495}
   - component: {fileID: 8930528163151027206}
   m_Layer: 11
-  m_Name: Tete_Mei
+  m_Name: Tete
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -262,7 +262,7 @@ GameObject:
   - component: {fileID: 1579294982189558558}
   - component: {fileID: 3942683743641411854}
   m_Layer: 11
-  m_Name: Corps_Mei
+  m_Name: Corps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

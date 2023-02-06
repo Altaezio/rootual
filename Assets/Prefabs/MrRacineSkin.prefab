@@ -11,13 +11,13 @@ GameObject:
   - component: {fileID: 497782974442150122}
   - component: {fileID: 919132148109418629}
   - component: {fileID: 919132148109418628}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: MrRacineSkin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &497782974442150122
 Transform:
   m_ObjectHideFlags: 0
@@ -58,10 +58,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.8
-  m_Height: 2.79
+  m_Radius: 2
+  m_Height: 4.6
   m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0.5, z: -0.00000011920929}
+  m_Center: {x: 0.000000059604645, y: 1.33, z: -0.00000011920929}
 --- !u!1 &2588498148663400471
 GameObject:
   m_ObjectHideFlags: 0
@@ -73,8 +73,8 @@ GameObject:
   - component: {fileID: 3416702389578737837}
   - component: {fileID: 9140183631312995322}
   - component: {fileID: 7883496896097231866}
-  m_Layer: 8
-  m_Name: Cylinder.002
+  m_Layer: 9
+  m_Name: Teeth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -156,8 +156,8 @@ GameObject:
   - component: {fileID: 6726255842278434096}
   - component: {fileID: 5411829304442718020}
   - component: {fileID: 7102555109481007582}
-  m_Layer: 8
-  m_Name: Cylinder
+  m_Layer: 9
+  m_Name: Roots
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -239,8 +239,8 @@ GameObject:
   - component: {fileID: 6692642560219655632}
   - component: {fileID: 4063726597560905488}
   - component: {fileID: 7152596670265628603}
-  m_Layer: 8
-  m_Name: Cylinder.001
+  m_Layer: 9
+  m_Name: Corps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

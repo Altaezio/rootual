@@ -12,10 +12,10 @@ EditorBuildSettings:
     path: Assets/Scenes/Game.unity
     guid: e3f3922ab73278f46bafab808e0b1581
   - enabled: 1
-    path: Assets/Scenes/GameOver.unity
+    path: Assets/Scenes/RootWin.unity
     guid: 0dee45702a3feb9498f166ca5fbb03be
   - enabled: 1
-    path: Assets/Scenes/Victory.unity
+    path: Assets/Scenes/PickerWin.unity
     guid: ed706b292ac4e864bbdbc90f3f11dd8b
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 65cfa7dd4327d0c419a3ae810fdd1604, type: 2}

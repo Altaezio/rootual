@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 965192166496042704}
   - component: {fileID: 1444972453599111682}
   m_Layer: 0
-  m_Name: Sphere.002
+  m_Name: Berry3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 3065793818561721509}
   - component: {fileID: 5610726294383315860}
   m_Layer: 0
-  m_Name: Sphere.003
+  m_Name: Berry4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -207,7 +207,7 @@ GameObject:
   - component: {fileID: 4252382710946460978}
   - component: {fileID: 309091451427637368}
   m_Layer: 0
-  m_Name: Sphere.004
+  m_Name: Berry5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -305,7 +305,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3161839354399876574
 Transform:
@@ -336,7 +336,7 @@ GameObject:
   - component: {fileID: 292500766652243208}
   - component: {fileID: 8169055403227556539}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Berry1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -466,7 +466,7 @@ GameObject:
   - component: {fileID: 7828352359176138429}
   - component: {fileID: 3863547103083965469}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Stick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -563,7 +563,7 @@ GameObject:
   - component: {fileID: 70168937863849672}
   - component: {fileID: 3665953175755758814}
   m_Layer: 0
-  m_Name: Sphere.005
+  m_Name: Berry6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -658,13 +658,13 @@ GameObject:
   - component: {fileID: 6602449065162052819}
   - component: {fileID: 5185894180072813392}
   - component: {fileID: 8919143586394023759}
-  - component: {fileID: 8566896374979338492}
+  - component: {fileID: 6127533388548055777}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Bush
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6602449065162052819
 Transform:
@@ -674,7 +674,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6752971052782525859}
   m_LocalRotation: {x: -0.7071067, y: -0.000000030908616, z: 0.000000030908623, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -731,8 +731,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8566896374979338492
-BoxCollider:
+--- !u!64 &6127533388548055777
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -741,9 +741,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.012, y: 0.017999997, z: 0.011999998}
-  m_Center: {x: -9.313226e-10, y: 0.0000000018626448, z: 6.617445e-24}
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4711208715938537054, guid: 5fd430397c161c8478fea7d55a43d438, type: 3}
 --- !u!1 &6873283285251032355
 GameObject:
   m_ObjectHideFlags: 0
@@ -758,7 +759,7 @@ GameObject:
   - component: {fileID: 4409007565353274262}
   - component: {fileID: 4847059056306267771}
   m_Layer: 0
-  m_Name: Barry
+  m_Name: Berries
   m_TagString: food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -795,7 +796,7 @@ SphereCollider:
   m_GameObject: {fileID: 6873283285251032355}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.7
   m_Center: {x: 0, y: 0, z: 0}
@@ -833,6 +834,7 @@ MonoBehaviour:
   collectBarAnim: {fileID: 0}
   audioSource: {fileID: 4847059056306267771}
   probabilityToAppear: 0.2
+  collectingArea: {fileID: 1743333194966317269}
 --- !u!82 &4847059056306267771
 AudioSource:
   m_ObjectHideFlags: 0
@@ -942,7 +944,7 @@ GameObject:
   - component: {fileID: 2578796469295745039}
   - component: {fileID: 7122490227525206563}
   m_Layer: 0
-  m_Name: Sphere.001
+  m_Name: Berry2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

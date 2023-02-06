@@ -11,6 +11,7 @@ public class FoodProperties : MonoBehaviour
 
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private float probabilityToAppear;
+    [SerializeField] private Collider collectingArea;
 
     void Start()
     {
@@ -21,6 +22,8 @@ public class FoodProperties : MonoBehaviour
         if (Random.Range(0.0f, 1.0f) > probabilityToAppear)
         {
             Destroy(this.gameObject);
+        } else {
+            collectingArea.enabled = true;
         }
     }
 

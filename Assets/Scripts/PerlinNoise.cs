@@ -5,45 +5,41 @@ using UnityEngine;
 public class PerlinNoise : MonoBehaviour
 {
     [SerializeField]
-    private List<GameObject> bigTrees;
+    private List<GameObject> bigPlants;
     [SerializeField]
-    private List<GameObject> trees;
+    private List<GameObject> middlePlants;
     [SerializeField]
-    private List<GameObject> buisson;
+    private List<GameObject> smallPlants;
     [SerializeField]
     private List<GameObject> nothing;
     [SerializeField]
-    private List<GameObject> eau;
-    [SerializeField]
     public GameObject CollectBar;
     public Animator CollectBarAnim;
-
     private List<List<GameObject>> objectPrefabs = new();
-
-    public GameObject village;
-    public int villageWidth;
     public int[,] matrixMap;
     public float scale = 10f;
     private int seed;
     public int width = 20;
     public float defaultInstantiateThreshold = 0.5f;
-    public GameObject rescueZone;
-    public GameObject playerSpawn;
+    public GameObject rescueZone, mrPropre, mrRacine;
     
 
     private void Start()
     {
-        objectPrefabs.Add(bigTrees);
-        objectPrefabs.Add(trees);
-        objectPrefabs.Add(buisson);
+        objectPrefabs.Add(middlePlants);
+        objectPrefabs.Add(bigPlants);
+        objectPrefabs.Add(smallPlants);
         objectPrefabs.Add(nothing);
-        objectPrefabs.Add(eau);
 
+        GenerateMap();
+        SpawnEntities();
+    }
+
+    private void GenerateMap()
+    {
         matrixMap = new int[width, width];
-        villageWidth = 10;
 
         seed = Random.Range(0, 10000);
-        // Debug.Log(seed);
         Random.InitState(seed);
 
         for (int x = 0; x < width; x++)
@@ -66,12 +62,10 @@ public class PerlinNoise : MonoBehaviour
                     case 3:
                         instantiateThreshold = 1.0f;
                         break;
-                    case 0:
-                    case 6:
+                    case 0: case 6:
                         instantiateThreshold = 0.5f;
                         break;
-                    case 2:
-                    case 4:
+                    case 2: case 4:
                         instantiateThreshold = 0.25f;
                         break;
                     default:
@@ -86,7 +80,7 @@ public class PerlinNoise : MonoBehaviour
             }
         }
 
-        int best = 0;
+        /* int best = 0;
         int bestX = 0;
         int bestZ = 0;
 
@@ -116,9 +110,26 @@ public class PerlinNoise : MonoBehaviour
                 bestX = randX;
                 bestZ = randZ;
             }
-        }
+        } */
+    }
 
-        rescueZone.transform.position = new Vector3(bestX, 0, bestZ);
-        playerSpawn.transform.position = new Vector3(bestX, 0, bestZ);
+    private void SpawnEntities()
+    {
+        int mrPropreX;
+        int mrPropreZ;
+        do{
+            mrPropreX = Random.Range(0, width);
+            mrPropreZ = Random.Range(0, width);
+        }while(matrixMap[mrPropreX, mrPropreZ] != objectPrefabs.IndexOf(nothing));
+
+        mrPropre.transform.position = new Vector3(mrPropreX, mrPropre.transform.position.y, mrPropreZ);
+        rescueZone.transform.position = new Vector3(mrPropreX, rescueZone.transform.position.y, mrPropreZ);
+
+        Vector3 mrRacinePos;
+        do{
+            mrRacinePos = new Vector3(Random.Range(0, width), mrRacine.transform.position.y, Random.Range(0, width));
+        }while(Vector3.Distance(mrPropre.transform.position, mrRacinePos) < (width/2)-1);
+
+        mrRacine.transform.position = mrRacinePos;
     }
 }
