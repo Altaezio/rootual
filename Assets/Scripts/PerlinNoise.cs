@@ -17,10 +17,10 @@ public class PerlinNoise : MonoBehaviour
     public Animator CollectBarAnim;
     private List<List<GameObject>> objectPrefabs = new();
     public int[,] matrixMap;
-    public float scale = 10f;
+    public float scale;
     private int seed;
-    public int width = 20;
-    public float defaultInstantiateThreshold = 0.5f;
+    public int width;
+    public float defaultInstantiateThreshold;
     public GameObject rescueZone, mrPropre, mrRacine;
     
 

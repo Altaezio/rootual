@@ -19,18 +19,20 @@ public class PlayerMovement : MonoBehaviour
     private float rotation;
     private bool isRunning;
     private float runningRate = 1.5f;
+    public bool rootAttack = false;
 
     private void Start()
     {
-        Cursor.visible = false;
         isRunning = false;
         currentMoveSpeed = DefaultMoveSpeed;
     }
 
     private void FixedUpdate()
     {
-        rb.position += rb.rotation * (currentMoveSpeed * new Vector3(move.x, 0, move.y));
-        rb.MoveRotation(Quaternion.Euler((rb.rotation.eulerAngles.y + rotation * rotationSpeed) * Vector3.up));
+        if(!rootAttack){
+            rb.position += rb.rotation * (currentMoveSpeed * new Vector3(move.x, 0, move.y));
+            rb.MoveRotation(Quaternion.Euler((rb.rotation.eulerAngles.y + rotation * rotationSpeed) * Vector3.up));
+        }   
     }
 
     public void Move(InputAction.CallbackContext context)
