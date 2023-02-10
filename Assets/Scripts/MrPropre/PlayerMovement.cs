@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     private float rotation;
     private bool isRunning;
     private float runningRate = 1.5f;
-    public bool rootAttack = false;
+    public bool immobilized = false;
 
     private void Start()
     {
@@ -29,7 +29,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(!rootAttack){
+        if(!immobilized) // permet d'immobiliser les deux joueurs en cas d'attaque (à tester car j'ai pas de manette pour le moment)
+        {
             rb.position += rb.rotation * (currentMoveSpeed * new Vector3(move.x, 0, move.y));
             rb.MoveRotation(Quaternion.Euler((rb.rotation.eulerAngles.y + rotation * rotationSpeed) * Vector3.up));
         }   
@@ -64,4 +65,6 @@ public class PlayerMovement : MonoBehaviour
             isRunning = false;
         }
     }
+
+    public void IsImmobilized(bool immobilized) { this.immobilized = immobilized; }
 }

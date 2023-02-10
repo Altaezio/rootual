@@ -10,7 +10,7 @@ public class FoodCollect : MonoBehaviour
     public GameObject foodPocket;
 
     [SerializeField]
-    private PlayerMovement playerMovement;
+    private PlayerMovement mrPropreMovement;
     [SerializeField]
     private AudioSource audioSource;
     [SerializeField]
@@ -42,10 +42,12 @@ public class FoodCollect : MonoBehaviour
         CalculateSpeed(lastFoodWeight);
     }
 
-    private void OnTriggerEnter(Collider other)
+    // À noter qu'avec OnTriggerEnter, si le joueur pose 2 objets l'un sur l'autre, il ne peut prendre qu'un objet dans un premier temps (logique) puis pour prendre le second, il doit sortir de son rayon et entrer de nouveau. Problème résolu avec OnTriggerStay mais plein de request envoyée quand le joueur est dans la zone d'un fruit.
+    private void OnTriggerEnter(Collider other) 
     {
         if (other.CompareTag("food"))
         {
+            // Debug.Log(other.gameObject.name);
             foodAtRange = true;
             foodInRange = other.gameObject;
         }
@@ -114,7 +116,7 @@ public class FoodCollect : MonoBehaviour
     {
         currentLoad += foodLoad;
         fillFoodBar.GetComponent<Image>().fillAmount = 1 - (currentLoad / maxLoad);
-        float speed = (((playerMovement.DefaultMoveSpeed - playerMovement.MinMoveSpeed) * currentLoad) / maxLoad + playerMovement.MinMoveSpeed);
-        playerMovement.UpdateMoveSpeed(speed);
+        float speed = (((mrPropreMovement.DefaultMoveSpeed - mrPropreMovement.MinMoveSpeed) * currentLoad) / maxLoad + mrPropreMovement.MinMoveSpeed);
+        mrPropreMovement.UpdateMoveSpeed(speed);
     }
 }

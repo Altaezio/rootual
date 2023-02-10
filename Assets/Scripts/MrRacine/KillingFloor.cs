@@ -21,6 +21,7 @@ public class KillingFloor : MonoBehaviour
     private AudioSource coolDownNotBack;
     [SerializeField]
     private KillingTest testIfAtRange;
+    [SerializeField] PlayerMovement mrRacineMovement;
 
     private bool onCoolDown;
     private bool isAtRange { get => testIfAtRange.PlayerInRange; }
@@ -46,6 +47,7 @@ public class KillingFloor : MonoBehaviour
     {
         onCoolDown = true;
         killingMouth.SetActive(true);
+        mrRacineMovement.IsImmobilized(true);
         if (isAtRange)
             attack.Play();
         else
@@ -58,6 +60,7 @@ public class KillingFloor : MonoBehaviour
     {
         yield return new WaitForSeconds(attackTime);
         killingMouth.SetActive(false);
+        mrRacineMovement.IsImmobilized(false);
         yield return new WaitForSeconds(coolDown - attackTime);
         onCoolDown = false;
         coolDownBack.Play();
