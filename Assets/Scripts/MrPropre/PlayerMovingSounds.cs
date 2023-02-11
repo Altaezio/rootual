@@ -29,6 +29,8 @@ public class PlayerMovingSounds : MonoBehaviour
 
     public void IsMoving(InputAction.CallbackContext context)
     {
+        if(!this.gameObject.activeInHierarchy) return;
+
         Vector2 move = context.ReadValue<Vector2>();
         if (move == Vector2.zero)
         {
