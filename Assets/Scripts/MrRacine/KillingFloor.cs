@@ -21,10 +21,11 @@ public class KillingFloor : MonoBehaviour
     private AudioSource coolDownNotBack;
     [SerializeField]
     private KillingTest testIfAtRange;
-    [SerializeField] PlayerMovement mrRacineMovement;
+    [SerializeField]
+    private PlayerMovement mrRacineMovement;
 
     private bool onCoolDown;
-    private bool isAtRange { get => testIfAtRange.PlayerInRange; }
+    private bool IsAtRange { get => testIfAtRange.PlayerInRange; }
 
     private void Start()
     {
@@ -47,11 +48,13 @@ public class KillingFloor : MonoBehaviour
     {
         onCoolDown = true;
         killingMouth.SetActive(true);
-        mrRacineMovement.IsImmobilized(true);
-        if (isAtRange)
+        mrRacineMovement.IsImmobilze(true);
+        if (IsAtRange)
             attack.Play();
         else
             missedAttack.Play();
+
+        StartCoroutine(Emerge());
 
         StartCoroutine(CoolDown());
     }
@@ -59,10 +62,33 @@ public class KillingFloor : MonoBehaviour
     private IEnumerator CoolDown()
     {
         yield return new WaitForSeconds(attackTime);
-        killingMouth.SetActive(false);
-        mrRacineMovement.IsImmobilized(false);
+        mrRacineMovement.IsImmobilze(false);
         yield return new WaitForSeconds(coolDown - attackTime);
         onCoolDown = false;
         coolDownBack.Play();
+    }
+
+    private IEnumerator Emerge()
+    {
+        float time = 0;
+        while (time <= attackTime * .5f)
+        {
+            killingMouth.transform.localPosition = (killingMouth.transform.localPosition.y + (3.75f * 2 / attackTime) * Time.deltaTime) * Vector3.up;
+            time += Time.deltaTime;
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
+        StartCoroutine(BackToDust());
+    }
+
+    private IEnumerator BackToDust()
+    {
+        float time = 0;
+        while (time <= attackTime * .5f)
+        {
+            killingMouth.transform.localPosition = (killingMouth.transform.localPosition.y - (3.75f * 2 / attackTime) * Time.deltaTime) * Vector3.up;
+            time += Time.deltaTime;
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
+        killingMouth.SetActive(false);
     }
 }

@@ -14,7 +14,7 @@ public class KillingMouth : MonoBehaviour
             SetControllerVibration.hightFrequency = 0;
             SetControllerVibration.lowFrequency = 0;
             // si le jeux intègre plusieurs vies pour le joueurs, il faut ajouter une ligne pour dé-immobiliser Mr Propre.
-            mrPropreMovement.IsImmobilized(true);
+            mrPropreMovement.IsImmobilze(true);
             other.GetComponent<LifeManagment>().Lives -= 1;
         }
     }

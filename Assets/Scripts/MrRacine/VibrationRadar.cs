@@ -9,11 +9,12 @@ public class VibrationRadar : MonoBehaviour
     private Transform otherPlayer;
     [SerializeField]
     private float angleToDetect;
+    [SerializeField]
+    private float vibration;
 
     private void FixedUpdate()
     {
         float vibrationLvl = VibrationPerAngle(GetAngleBetweenPlayers());
-        // Debug.Log($"vibration {vibrationLvl}");
         SetControllerVibration.hightFrequency = vibrationLvl;
     }
 
@@ -24,8 +25,7 @@ public class VibrationRadar : MonoBehaviour
 
     private float VibrationPerAngle(float angle)
     {
-        // Debug.Log($"angle : {angle}");
         if (angle > angleToDetect) return 0;
-        return .3f * (-1 / angleToDetect * angle + 1);
+        return vibration;
     }
 }

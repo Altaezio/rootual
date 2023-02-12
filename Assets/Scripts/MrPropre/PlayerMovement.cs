@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     private float rotation;
     private bool isRunning;
     private float runningRate = 1.5f;
-    public bool immobilized = false;
+    private bool immobilized = false;
 
     private void Start()
     {
@@ -66,5 +66,5 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void IsImmobilized(bool immobilized) { this.immobilized = immobilized; }
+    public void IsImmobilze(bool immobilized) { this.immobilized = immobilized; }
 }
