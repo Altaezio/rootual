@@ -17,7 +17,7 @@ public class VillageCollision : MonoBehaviour
     private void decrementDuration()
     {
         gameDuration--;
-        durationTMP.text = "Time left : " + gameDuration/60 + ":" + gameDuration%60 + " min";
+        durationTMP.text = gameDuration/60 + ":" + gameDuration%60;
 
         if(gameDuration <= 0)
         {

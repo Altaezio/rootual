@@ -75,7 +75,7 @@ public class PerlinNoise : MonoBehaviour
 
                 if (probability > 1 - instantiateThreshold)
                 {
-                    GameObject clone = Instantiate(objectPrefab, position, Quaternion.identity, this.transform);
+                    GameObject clone = Instantiate(objectPrefab, position, Quaternion.Euler(0, Random.Range(0, 180), 0), this.transform);
                 }
             }
         }
