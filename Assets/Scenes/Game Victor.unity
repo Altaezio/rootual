@@ -6193,7 +6193,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1069335691
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6437,7 +6437,6 @@ MonoBehaviour:
   coolDownNotBack: {fileID: 1087723150}
   testIfAtRange: {fileID: 407352412}
   mrRacineMovement: {fileID: 1087723145}
-  animationSpeed: 0.1
 --- !u!114 &1087723145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7015,8 +7014,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   otherPlayer: {fileID: 2007078880}
-  angleToDetect: 40
-  vibration: 0.3
+  angleToDetect: 30
+  vibration: 0.15
 --- !u!1 &1141679900
 GameObject:
   m_ObjectHideFlags: 0
@@ -8218,7 +8217,7 @@ MonoBehaviour:
   walk: {fileID: 2007078874}
   heartBeat: {fileID: 2007078882}
   maxVolumeWalk: 0.8
-  maxVolumeHeart: 0.5
+  maxVolumeHeart: 0.3
   minVolumeWalk: 0
   minVolumeHeart: 0.05
   fadeInDurationWalk: 0.5
