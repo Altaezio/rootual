@@ -12,17 +12,13 @@ public class KillingFloor : MonoBehaviour
     [SerializeField]
     private float attackTime;
     [SerializeField]
-    private AudioSource attack;
-    [SerializeField]
-    private AudioSource missedAttack;
-    [SerializeField]
-    private AudioSource coolDownBack;
-    [SerializeField]
-    private AudioSource coolDownNotBack;
+    private AudioSource attack, missedAttack, coolDownBack, coolDownNotBack;
     [SerializeField]
     private KillingTest testIfAtRange;
     [SerializeField]
     private PlayerMovement mrRacineMovement;
+    [SerializeField]
+    private AnimationCurve attackMovementCurve;
 
     private bool onCoolDown;
     private bool IsAtRange { get => testIfAtRange.PlayerInRange; }
@@ -56,39 +52,26 @@ public class KillingFloor : MonoBehaviour
 
         StartCoroutine(Emerge());
 
-        StartCoroutine(CoolDown());
     }
 
     private IEnumerator CoolDown()
     {
-        yield return new WaitForSeconds(attackTime);
-        mrRacineMovement.IsImmobilze(false);
-        yield return new WaitForSeconds(coolDown - attackTime);
+        yield return new WaitForSeconds(coolDown);
         onCoolDown = false;
         coolDownBack.Play();
     }
 
     private IEnumerator Emerge()
     {
-        float time = 0;
-        while (time <= attackTime * .5f)
+        float abscisse = 0;
+        while (abscisse <= 1)
         {
-            killingMouth.transform.localPosition = (killingMouth.transform.localPosition.y + (3.75f * 2 / attackTime) * Time.deltaTime) * Vector3.up;
-            time += Time.deltaTime;
-            yield return new WaitForSeconds(Time.deltaTime);
-        }
-        StartCoroutine(BackToDust());
-    }
-
-    private IEnumerator BackToDust()
-    {
-        float time = 0;
-        while (time <= attackTime * .5f)
-        {
-            killingMouth.transform.localPosition = (killingMouth.transform.localPosition.y - (3.75f * 2 / attackTime) * Time.deltaTime) * Vector3.up;
-            time += Time.deltaTime;
+            killingMouth.transform.localPosition = attackMovementCurve.Evaluate(abscisse) * Vector3.up;
+            abscisse += Time.deltaTime / attackTime;
             yield return new WaitForSeconds(Time.deltaTime);
         }
         killingMouth.SetActive(false);
+        mrRacineMovement.IsImmobilze(false);
+        StartCoroutine(CoolDown());
     }
 }
