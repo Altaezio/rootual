@@ -13,4 +13,9 @@ public class SetControllerVibration : MonoBehaviour
         if(!(Input.GetJoystickNames().Length > 0)) return;
         Gamepad.current.SetMotorSpeeds(lowFrequency, hightFrequency);
     }
+
+    private void OnDestroy()
+    {
+        Gamepad.current.SetMotorSpeeds(0, 0);
+    }
 }
