@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if(!immobilized)
         {
-            rb.position += rb.rotation * (currentMoveSpeed * new Vector3(move.x, 0, move.y));
+            rb.MovePosition(rb.position + rb.rotation * (currentMoveSpeed * new Vector3(move.x, 0, move.y)));
             rb.MoveRotation(Quaternion.Euler((rb.rotation.eulerAngles.y + rotation * rotationSpeed) * Vector3.up));
         }   
     }
