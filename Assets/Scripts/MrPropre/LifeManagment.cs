@@ -7,6 +7,10 @@ public class LifeManagment : MonoBehaviour
 {
     [SerializeField]
     private int lives;
+    [SerializeField]
+    private PlayerMovement playerMovement;
+    [SerializeField]
+    private Rigidbody rb;
 
     public int Lives
     {
@@ -16,6 +20,9 @@ public class LifeManagment : MonoBehaviour
             lives = value;
             if (lives == 0)
             {
+                playerMovement.IsImmobilze(true);
+                rb.constraints = RigidbodyConstraints.None;
+                transform.Rotate(0, 0, 5);
                 StartCoroutine(GoToNextScene());
             }
         }

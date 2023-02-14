@@ -17,21 +17,19 @@ public class PlayerMovement : MonoBehaviour
     private float currentMoveSpeed;
     private Vector2 move;
     private float rotation;
-    private bool isRunning;
-    private float runningRate = 1.5f;
-    public bool immobilized = false;
+    private bool immobilized;
 
     private void Start()
     {
-        isRunning = false;
+        immobilized = false;
         currentMoveSpeed = DefaultMoveSpeed;
     }
 
     private void FixedUpdate()
     {
-        if(!immobilized) // permet d'immobiliser les deux joueurs en cas d'attaque (à tester car j'ai pas de manette pour le moment)
+        if(!immobilized)
         {
-            rb.position += rb.rotation * (currentMoveSpeed * new Vector3(move.x, 0, move.y));
+            rb.MovePosition(rb.position + rb.rotation * (currentMoveSpeed * new Vector3(move.x, 0, move.y)));
             rb.MoveRotation(Quaternion.Euler((rb.rotation.eulerAngles.y + rotation * rotationSpeed) * Vector3.up));
         }   
     }
@@ -51,20 +49,10 @@ public class PlayerMovement : MonoBehaviour
         currentMoveSpeed = newSpeed;
     }
 
-    public void Running(InputAction.CallbackContext context)
+    public void UpdateRelativeMoveSpeed(float speedMultiplier)
     {
-        if (!isRunning && context.performed)
-        {
-            currentMoveSpeed *= runningRate;
-            isRunning = true;
-        }
-
-        if (context.canceled && isRunning)
-        {
-            currentMoveSpeed /= runningRate;
-            isRunning = false;
-        }
+        currentMoveSpeed *= speedMultiplier;
     }
 
-    public void IsImmobilized(bool immobilized) { this.immobilized = immobilized; }
+    public void IsImmobilze(bool immobilized) { this.immobilized = immobilized; }
 }

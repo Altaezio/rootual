@@ -19,7 +19,7 @@ public class FoodCollect : MonoBehaviour
     public float currentLoad;
     private bool foodAtRange;
     private GameObject foodInRange;
-    public GameObject fillFoodBar;
+    public Image fillFoodBar;
 
     private void Start()
     {
@@ -115,7 +115,7 @@ public class FoodCollect : MonoBehaviour
     private void CalculateSpeed(float foodLoad)
     {
         currentLoad += foodLoad;
-        fillFoodBar.GetComponent<Image>().fillAmount = 1 - (currentLoad / maxLoad);
+        fillFoodBar.fillAmount = 1 - (currentLoad / maxLoad);
         float speed = (((mrPropreMovement.DefaultMoveSpeed - mrPropreMovement.MinMoveSpeed) * currentLoad) / maxLoad + mrPropreMovement.MinMoveSpeed);
         mrPropreMovement.UpdateMoveSpeed(speed);
     }

@@ -12,19 +12,16 @@ public class KillingFloor : MonoBehaviour
     [SerializeField]
     private float attackTime;
     [SerializeField]
-    private AudioSource attack;
-    [SerializeField]
-    private AudioSource missedAttack;
-    [SerializeField]
-    private AudioSource coolDownBack;
-    [SerializeField]
-    private AudioSource coolDownNotBack;
+    private AudioSource attack, missedAttack, coolDownBack, coolDownNotBack;
     [SerializeField]
     private KillingTest testIfAtRange;
-    [SerializeField] PlayerMovement mrRacineMovement;
+    [SerializeField]
+    private PlayerMovement mrRacineMovement;
+    [SerializeField]
+    private AnimationCurve attackMovementCurve;
 
     private bool onCoolDown;
-    private bool isAtRange { get => testIfAtRange.PlayerInRange; }
+    private bool IsAtRange { get => testIfAtRange.PlayerInRange; }
 
     private void Start()
     {
@@ -47,22 +44,34 @@ public class KillingFloor : MonoBehaviour
     {
         onCoolDown = true;
         killingMouth.SetActive(true);
-        mrRacineMovement.IsImmobilized(true);
-        if (isAtRange)
+        mrRacineMovement.IsImmobilze(true);
+        if (IsAtRange)
             attack.Play();
         else
             missedAttack.Play();
 
-        StartCoroutine(CoolDown());
+        StartCoroutine(Emerge());
+
     }
 
     private IEnumerator CoolDown()
     {
-        yield return new WaitForSeconds(attackTime);
-        killingMouth.SetActive(false);
-        mrRacineMovement.IsImmobilized(false);
-        yield return new WaitForSeconds(coolDown - attackTime);
+        yield return new WaitForSeconds(coolDown);
         onCoolDown = false;
         coolDownBack.Play();
+    }
+
+    private IEnumerator Emerge()
+    {
+        float abscisse = 0;
+        while (abscisse <= 1)
+        {
+            killingMouth.transform.localPosition = attackMovementCurve.Evaluate(abscisse) * Vector3.up;
+            abscisse += Time.deltaTime / attackTime;
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
+        killingMouth.SetActive(false);
+        mrRacineMovement.IsImmobilze(false);
+        StartCoroutine(CoolDown());
     }
 }
