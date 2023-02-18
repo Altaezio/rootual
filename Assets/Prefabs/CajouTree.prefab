@@ -341,6 +341,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Weight: 1.5
   CollectTime: 4
+  FoodType: MediumFruit
   collectBar: {fileID: 0}
   collectBarAnim: {fileID: 0}
   audioSource: {fileID: 6560295575909581097}

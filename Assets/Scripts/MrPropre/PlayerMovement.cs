@@ -9,12 +9,9 @@ public class PlayerMovement : MonoBehaviour
     public float DefaultMoveSpeed;
     public float MinMoveSpeed;
 
-    [SerializeField]
-    private Rigidbody rb;
-    [SerializeField]
-    private float rotationSpeed;
-
-    private float currentMoveSpeed;
+    [SerializeField] private Rigidbody rb;
+    [SerializeField] private float rotationSpeed;
+    [SerializeField] private float currentMoveSpeed;
     private Vector2 move;
     private float rotation;
     private bool immobilized;

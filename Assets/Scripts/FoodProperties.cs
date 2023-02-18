@@ -6,6 +6,7 @@ public class FoodProperties : MonoBehaviour
 {
     public float Weight;
     public float CollectTime;
+    public string FoodType;
     [SerializeField] private GameObject collectBar;
     [SerializeField] private Animator collectBarAnim;
 

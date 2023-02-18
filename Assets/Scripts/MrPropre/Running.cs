@@ -36,7 +36,7 @@ public class Running : MonoBehaviour
     {
         maxStamina = 10;
         CurrentStamina = maxStamina;
-        staminaFill.transform.parent.gameObject.SetActive(false);
+        // staminaFill.transform.parent.gameObject.SetActive(false);
     }
 
     public void Run(InputAction.CallbackContext context)
@@ -78,7 +78,7 @@ public class Running : MonoBehaviour
         if (down != null)
             StopCoroutine(down);
         isGettingBack = true;
-        playerMovement.UpdateRelativeMoveSpeed(1 / runningRate);
+        playerMovement.UpdateRelativeMoveSpeed(1/runningRate);
         yield return new WaitForSeconds(waitBeforeGettingBack);
         while (CurrentStamina < maxStamina)
         {
@@ -89,7 +89,7 @@ public class Running : MonoBehaviour
         isGettingBack = false;
         if(countDown != null)
             StopCoroutine(countDown);
-        countDown = StartCoroutine(CountDownToHideFill());
+        // countDown = StartCoroutine(CountDownToHideFill());
     }
 
     private IEnumerator CountDownToHideFill()

@@ -27,7 +27,7 @@ public class VillageCollision : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if(other.gameObject.CompareTag("Player") && other.gameObject.GetComponent<FoodCollect>().currentLoad == 0)
+        if(other.gameObject.CompareTag("Player") && other.gameObject.GetComponent<FoodCollect>().currentLoad >= 30)
         {
             SceneManager.LoadScene("PickerWin");
         }
