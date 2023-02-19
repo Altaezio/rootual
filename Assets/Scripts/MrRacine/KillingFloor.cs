@@ -5,21 +5,13 @@ using UnityEngine.InputSystem;
 
 public class KillingFloor : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject killingMouth;
-    [SerializeField]
-    private float coolDown;
-    [SerializeField]
-    private float attackTime;
-    [SerializeField]
-    private AudioSource attack, missedAttack, coolDownBack, coolDownNotBack;
-    [SerializeField]
-    private KillingTest testIfAtRange;
-    [SerializeField]
-    private PlayerMovement mrRacineMovement;
-    [SerializeField]
-    private AnimationCurve attackMovementCurve;
-
+    [SerializeField] private GameObject killingMouth;
+    [SerializeField] private float coolDown;
+    [SerializeField] private float attackTime;
+    [SerializeField] private AudioSource attack, missedAttack, coolDownBack, coolDownNotBack;
+    [SerializeField] private KillingTest testIfAtRange;
+    [SerializeField] private PlayerMovement mrRacineMovement;
+    [SerializeField] private AnimationCurve attackMovementCurve;
     private bool onCoolDown;
     private bool IsAtRange { get => testIfAtRange.PlayerInRange; }
 
@@ -44,7 +36,7 @@ public class KillingFloor : MonoBehaviour
     {
         onCoolDown = true;
         killingMouth.SetActive(true);
-        mrRacineMovement.IsImmobilze(true);
+        mrRacineMovement.IsImmobilize(true);
         if (IsAtRange)
             attack.Play();
         else
@@ -71,7 +63,7 @@ public class KillingFloor : MonoBehaviour
             yield return new WaitForSeconds(Time.deltaTime);
         }
         killingMouth.SetActive(false);
-        mrRacineMovement.IsImmobilze(false);
+        mrRacineMovement.IsImmobilize(false);
         StartCoroutine(CoolDown());
     }
 }

@@ -6,26 +6,16 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovingSounds : MonoBehaviour
 {
-    [SerializeField]
-    private AudioSource walk;
-    [SerializeField]
-    private AudioSource heartBeat;
-    [SerializeField]
-    private float maxVolumeWalk;
-    [SerializeField]
-    private float maxVolumeHeart;
-    [SerializeField]
-    private float minVolumeWalk;
-    [SerializeField]
-    private float minVolumeHeart;
-    [SerializeField]
-    private float fadeInDurationWalk;
-    [SerializeField]
-    private float fadeInDurationHeart;
-    [SerializeField]
-    private float fadeOutDurationWalk;
-    [SerializeField]
-    private float fadeOutDurationHeart;
+    [SerializeField] private AudioSource walk;
+    [SerializeField] private AudioSource heartBeat;
+    [SerializeField] private float maxVolumeWalk;
+    [SerializeField] private float maxVolumeHeart;
+    [SerializeField] private float minVolumeWalk;
+    [SerializeField] private float minVolumeHeart;
+    [SerializeField] private float fadeInDurationWalk;
+    [SerializeField] private float fadeInDurationHeart;
+    [SerializeField] private float fadeOutDurationWalk;
+    [SerializeField] private float fadeOutDurationHeart;
 
     public void IsMoving(InputAction.CallbackContext context)
     {

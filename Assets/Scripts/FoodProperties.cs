@@ -6,10 +6,9 @@ public class FoodProperties : MonoBehaviour
 {
     public float Weight;
     public float CollectTime;
-    public string FoodType;
+    public FoodType FoodType;
     [SerializeField] private GameObject collectBar;
     [SerializeField] private Animator collectBarAnim;
-
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private float probabilityToAppear;
     [SerializeField] private Collider collectingArea;
@@ -28,16 +27,22 @@ public class FoodProperties : MonoBehaviour
         }
     }
 
-    public void IsCollected()
+    public void CollectAnim()
     {
         audioSource.Play();
         collectBarAnim.speed = 1/CollectTime;
         collectBar.SetActive(true);
     }
 
-    public void StoppedCollected()
+    public void StopCollectAnim()
     {
         audioSource.Stop();
         collectBar.SetActive(false);
     }
 }
+
+public enum FoodType {
+    TopFruit,
+    GroundFruit,
+    MediumFruit
+};

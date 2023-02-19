@@ -8,14 +8,7 @@ public class MrPropreAnim : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private float rotationSpeed = 100f;
     private Quaternion targetRotation;
-    private float offsetY;
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        offsetY = this.transform.rotation.y;
-    }
+    private string currentAnimBool;
 
     // Update is called once per frame
     void FixedUpdate()
@@ -45,9 +38,15 @@ public class MrPropreAnim : MonoBehaviour
         }
     }
 
-    public void PickFoodAnim(string animTrigger)
+    public void PickUpAnim(string animBool)
     {   
-        animator.SetTrigger(animTrigger); 
+        currentAnimBool = animBool;
+        animator.SetBool(animBool, true); 
+    }
+
+    public void StopPickUpAnim()
+    {
+        animator.SetBool(currentAnimBool, false); 
     }
     
     public void DeathAnim(){ animator.SetTrigger("Death"); }

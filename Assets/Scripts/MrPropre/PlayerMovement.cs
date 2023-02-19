@@ -51,5 +51,5 @@ public class PlayerMovement : MonoBehaviour
         currentMoveSpeed *= speedMultiplier;
     }
 
-    public void IsImmobilze(bool immobilized) { this.immobilized = immobilized; }
+    public void IsImmobilize(bool immobilized) { this.immobilized = immobilized; }
 }

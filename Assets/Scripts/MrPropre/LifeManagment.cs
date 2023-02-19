@@ -18,18 +18,18 @@ public class LifeManagment : MonoBehaviour
             lives = value;
             if (lives == 0)
             {
-                playerMovement.IsImmobilze(true);
+                playerMovement.IsImmobilize(true);
                 // rb.constraints = RigidbodyConstraints.None;
                 // transform.Rotate(0, 0, 5);
                 mrPropreAnim.DeathAnim();
-                StartCoroutine(GoToNextScene());
+                StartCoroutine(GameOver());
             }
         }
     }
 
-    private IEnumerator GoToNextScene()
+    private IEnumerator GameOver()
     {
         yield return new WaitForSeconds(2);
-        SceneManager.LoadScene("RootWin"); // SceneManager.GetActiveScene().buildIndex + 1
+        SceneManager.LoadScene("RootWin");
     }
 }

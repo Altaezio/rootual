@@ -830,7 +830,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Weight: 0.5
   CollectTime: 2
-  FoodType: GroundFruit
+  FoodType: 1
   collectBar: {fileID: 0}
   collectBarAnim: {fileID: 0}
   audioSource: {fileID: 4847059056306267771}

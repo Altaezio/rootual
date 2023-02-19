@@ -4,10 +4,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 
-public class VillageCollision : MonoBehaviour
+public class EndGame : MonoBehaviour
 {
     private int gameDuration = 60*12;
     [SerializeField] private TextMeshProUGUI durationTMP;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +28,7 @@ public class VillageCollision : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if(other.gameObject.CompareTag("Player") && other.gameObject.GetComponent<FoodCollect>().currentLoad >= 30)
+        if(other.gameObject.CompareTag("Player") && other.gameObject.GetComponent<FoodCollect>().IsFull())
         {
             SceneManager.LoadScene("PickerWin");
         }

@@ -5431,7 +5431,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 253971369}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcab55bcb8aae8646a567ca491bc245d, type: 3}
+  m_Script: {fileID: 11500000, guid: 7fc640508e3dcf4408872e7f1f6a02bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   durationTMP: {fileID: 73528704}
@@ -8695,7 +8695,6 @@ MonoBehaviour:
   foodPocket: {fileID: 724523121}
   mrPropreMovement: {fileID: 2007078876}
   mrPropreAnim: {fileID: 2002389261}
-  audioSource: {fileID: 2007078874}
   maxLoad: 30
   currentLoad: 0
   fillFoodBar: {fileID: 265240147}

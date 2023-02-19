@@ -6,13 +6,9 @@ using UnityEngine.UI;
 
 public class Running : MonoBehaviour
 {
-    [SerializeField]
-    private PlayerMovement playerMovement;
-    [SerializeField]
-    private float runningRate, loseSpeed, getBackSpeed, waitBeforeGettingBack, waitBeforeHidingFill;
-    [SerializeField]
-    private Image staminaFill;
-
+    [SerializeField] private PlayerMovement playerMovement;
+    [SerializeField] private float runningRate, loseSpeed, getBackSpeed, waitBeforeGettingBack, waitBeforeHidingFill;
+    [SerializeField] private Image staminaFill;
     private int maxStamina;
     private float currentStamina;
     private float CurrentStamina
