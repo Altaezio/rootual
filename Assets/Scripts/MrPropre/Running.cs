@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,8 @@ using UnityEngine.UI;
 
 public class Running : MonoBehaviour
 {
+    public event Action<bool> ChangedSpeedToRunning;
+
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private float runningRate, loseSpeed, getBackSpeed, waitBeforeGettingBack, waitBeforeHidingFill;
     [SerializeField] private Image staminaFill;
@@ -40,6 +43,7 @@ public class Running : MonoBehaviour
         if (CanRun && context.performed)
         {
             playerMovement.UpdateRelativeMoveSpeed(runningRate);
+            ChangedSpeedToRunning(true);
             if (down != null)
                 StopCoroutine(down);
             down = StartCoroutine(LoseStamina());
@@ -74,7 +78,8 @@ public class Running : MonoBehaviour
         if (down != null)
             StopCoroutine(down);
         isGettingBack = true;
-        playerMovement.UpdateRelativeMoveSpeed(1/runningRate);
+        playerMovement.UpdateRelativeMoveSpeed(1 / runningRate);
+        ChangedSpeedToRunning(false);
         yield return new WaitForSeconds(waitBeforeGettingBack);
         while (CurrentStamina < maxStamina)
         {
@@ -83,7 +88,7 @@ public class Running : MonoBehaviour
         }
         CurrentStamina = maxStamina;
         isGettingBack = false;
-        if(countDown != null)
+        if (countDown != null)
             StopCoroutine(countDown);
         // countDown = StartCoroutine(CountDownToHideFill());
     }

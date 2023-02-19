@@ -7,8 +7,14 @@ public class MrPropreAnim : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private float rotationSpeed = 100f;
+    [SerializeField] private Running runningBehaviour;
     private Quaternion targetRotation;
     private string currentAnimBool;
+
+    private void Start()
+    {
+        runningBehaviour.ChangedSpeedToRunning += RunAnim;
+    }
 
     // Update is called once per frame
     void FixedUpdate()
@@ -22,32 +28,31 @@ public class MrPropreAnim : MonoBehaviour
         float angle = Mathf.Atan2(input.x, input.y) * Mathf.Rad2Deg;
         targetRotation = Quaternion.Euler(0f, angle, 0f);
 
-        if(context.performed){
+        if (context.performed)
+        {
             animator.SetBool("Walking", true);
-        }else{
+        }
+        else
+        {
             animator.SetBool("Walking", false);
         }
     }
 
-    public void RunAnim(InputAction.CallbackContext context)
+    private void RunAnim(bool isRunning)
     {
-        if(context.performed){
-            animator.SetBool("Running", true);
-        }else{
-            animator.SetBool("Running", false);
-        }
+        animator.SetBool("Running", isRunning);
     }
 
     public void PickUpAnim(string animBool)
-    {   
+    {
         currentAnimBool = animBool;
-        animator.SetBool(animBool, true); 
+        animator.SetBool(animBool, true);
     }
 
     public void StopPickUpAnim()
     {
-        animator.SetBool(currentAnimBool, false); 
+        animator.SetBool(currentAnimBool, false);
     }
-    
-    public void DeathAnim(){ animator.SetTrigger("Death"); }
+
+    public void DeathAnim() { animator.SetTrigger("Death"); }
 }
