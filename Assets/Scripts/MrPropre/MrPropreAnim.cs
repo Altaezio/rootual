@@ -51,6 +51,7 @@ public class MrPropreAnim : MonoBehaviour
 
     public void StopPickUpAnim()
     {
+        if(currentAnimBool == null) return;
         animator.SetBool(currentAnimBool, false);
     }
 

@@ -16,8 +16,8 @@ public class FoodProperties : MonoBehaviour
     void Start()
     {
         GameObject parent = transform.root.gameObject;
-        collectBar = parent.GetComponent<PerlinNoise>().CollectBar;
-        collectBarAnim = parent.GetComponent<PerlinNoise>().CollectBarAnim;
+        collectBar = parent.GetComponent<ProceduralMap>().CollectBar;
+        collectBarAnim = parent.GetComponent<ProceduralMap>().CollectBarAnim;
 
         if (Random.Range(0.0f, 1.0f) > probabilityToAppear)
         {

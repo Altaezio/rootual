@@ -2,26 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PerlinNoise : MonoBehaviour
+public class ProceduralMap : MonoBehaviour
 {
     public GameObject CollectBar;
     public Animator CollectBarAnim;
-
-    [SerializeField]
-    private List<GameObject> bigPlants, middlePlants, smallPlants, nothing, rocks;
-    [SerializeField]
-    private float scale;
-    [SerializeField]
-    private int width;
-    [SerializeField]
-    private float spawnoffset; // random offset when spawning objectfs so they are not aligned
-    [SerializeField]
-    private float defaultInstantiateThreshold;
-    [SerializeField]
-    private GameObject rescueZone, mrPropre, mrRacine;
-    [SerializeField]
-    private Transform rockParent;
-
+    [SerializeField] private List<GameObject> bigPlants, middlePlants, smallPlants, nothing, rocks;
+    [SerializeField] private float scale;
+    [SerializeField] private int width;
+    [SerializeField] private float spawnOffset; // random offset when spawning objectifs so they are not aligned
+    [SerializeField] private float defaultInstantiateThreshold;
+    [SerializeField] private GameObject rescueZone, mrPropre, mrRacine;
+    [SerializeField] private Transform rockParent;
     private List<List<GameObject>> objectPrefabs = new();
     private int[,] matrixMap;
     private int seed;
@@ -54,7 +45,7 @@ public class PerlinNoise : MonoBehaviour
                 List<GameObject> objects = objectPrefabs[objectIndex];
                 GameObject objectPrefab = objects[Random.Range(0, objects.Count)];
 
-                Vector3 position = new(x + Random.Range(-1f, 1f) * spawnoffset, 0, z + Random.Range(-1f, 1f) * spawnoffset);
+                Vector3 position = new(x + Random.Range(-1f, 1f) * spawnOffset, 0, z + Random.Range(-1f, 1f) * spawnOffset);
 
                 float probability = Random.Range(0.0f, 1.0f);
                 float instantiateThreshold;
@@ -182,7 +173,7 @@ public class PerlinNoise : MonoBehaviour
 
     private void SpawnAThing(int x, int z, GameObject prefab)
     {
-        Vector3 position = new(x + Random.Range(-1f, 1f) * spawnoffset, Random.Range(-1f, 1f) * spawnoffset, z + Random.Range(-1f, 1f) * spawnoffset);
+        Vector3 position = new(x + Random.Range(-1f, 1f) * spawnOffset, Random.Range(-1f, 1f) * spawnOffset, z + Random.Range(-1f, 1f) * spawnOffset);
         Instantiate(prefab, position, Quaternion.Euler(0, Random.Range(0, 180), 0), rockParent);
     }
 }
