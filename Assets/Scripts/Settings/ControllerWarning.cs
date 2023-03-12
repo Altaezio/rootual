@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class ControllerWarning : MonoBehaviour
 {
@@ -15,16 +16,16 @@ public class ControllerWarning : MonoBehaviour
 
     public void DetectController()
     {
-        foreach (string input in Input.GetJoystickNames())
+        if (Gamepad.all.Count > 0)
         {
-            if(input.ToLower().Contains("wireless controller"))
-            {
-                controllerWarning.text = "*Controller connected";
-                controllerWarning.color = Color.black;
-            } else {
-                controllerWarning.text = "*No controller connected";
-                controllerWarning.color = Color.red;
-            }
+            controllerWarning.text = "*Controller connected";
+            controllerWarning.color = Color.black;
+        }
+        else
+        {
+            controllerWarning.text = "*No controller connected";
+            controllerWarning.color = Color.red;
         }
     }
 }
+
