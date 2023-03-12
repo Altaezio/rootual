@@ -6182,14 +6182,15 @@ MonoBehaviour:
   - {fileID: 188592, guid: bcd44f8d0f766b340b72d555a8df8a72, type: 3}
   - {fileID: 147072, guid: 48333a5aa700be24c963813c82ef05d9, type: 3}
   - {fileID: 148516, guid: 7710ce4a7ee932b4a86742119e3babae, type: 3}
+  borderTrees: []
   scale: 10
   width: 75
-  spawnoffset: 0.3
+  spawnOffset: 0
   defaultInstantiateThreshold: 0.2
   rescueZone: {fileID: 253971369}
   mrPropre: {fileID: 2007078873}
   mrRacine: {fileID: 1087723141}
-  rockParent: {fileID: 0}
+  borderParent: {fileID: 0}
 --- !u!1 &1069335690
 GameObject:
   m_ObjectHideFlags: 0
@@ -6503,6 +6504,7 @@ MonoBehaviour:
   MinMoveSpeed: 0.025
   rb: {fileID: 1087723143}
   rotationSpeed: 5
+  currentMoveSpeed: 0
 --- !u!114 &1087723146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7862,10 +7864,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 733be58a58a215a4ea99160907edd44d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foodObject: []
+  foodInPocket: []
+  foodsInRange: []
   foodPocket: {fileID: 724523121}
   mrPropreMovement: {fileID: 2007078876}
-  audioSource: {fileID: 2007078874}
+  mrPropreAnim: {fileID: 0}
   maxLoad: 30
   currentLoad: 0
   fillFoodBar: {fileID: 1325842198}
@@ -7885,6 +7888,7 @@ MonoBehaviour:
   MinMoveSpeed: 0.05
   rb: {fileID: 2007078885}
   rotationSpeed: 0.2
+  currentMoveSpeed: 0
 --- !u!114 &2007078877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8083,6 +8087,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lives: 1
   playerMovement: {fileID: 2007078876}
+  mrPropreAnim: {fileID: 0}
   rb: {fileID: 2007078885}
 --- !u!82 &2007078882
 AudioSource:
