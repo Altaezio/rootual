@@ -13,44 +13,13 @@ public class FoodCollect : MonoBehaviour
     [SerializeField] private MrPropreAnim mrPropreAnim;
     [SerializeField] private float maxLoad;
     public float currentLoad;
-    // private bool foodAtRange;
-    // private GameObject foodInRange;
     [SerializeField] private Image fillFoodBar;
 
     private void Start()
     {
+        maxLoad = SettingManager.FruitAmountNeeded;
         currentLoad = 0;
     }
-
-    // Ancien code
-    // À noter qu'avec OnTriggerEnter, si le joueur pose 2 objets l'un sur l'autre, il ne peut prendre qu'un objet dans un premier temps (logique) puis pour prendre le second, il doit sortir de son rayon et entrer de nouveau. Problème résolu avec OnTriggerStay mais plein de request envoyée quand le joueur est dans la zone d'un fruit.
-    /*private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("food"))
-        {
-            // Debug.Log(other.gameObject.name);
-            foodAtRange = true;
-            foodInRange = other.gameObject;
-        }
-    }
-
-    // Ancien code
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("food"))
-        {
-            EndCollecting();
-        }
-    }*/
-
-    // Ancien code
-    /*private void EndCollecting()
-    {
-        foodAtRange = false;
-        if (foodInRange != null)
-            foodInRange.GetComponent<FoodProperties>().StopCollectAnim();
-        foodInRange = null;
-    }*/
     
     private void OnTriggerEnter(Collider other)
     {
@@ -69,24 +38,6 @@ public class FoodCollect : MonoBehaviour
             mrPropreAnim.StopPickUpAnim();
         }
     }
-
-    // Ancien code
-    /*public void Collect(InputAction.CallbackContext context)
-    {
-        if (context.canceled)
-        {
-            StopCoroutine(nameof(Collecting));
-            if (foodAtRange)
-            {
-                foodInRange.GetComponent<FoodProperties>().StoppedCollected();
-            }
-        }
-
-        if (!foodAtRange) return;
-
-        if (context.performed)
-            StartCoroutine(nameof(Collecting));
-    }*/
 
     public void Collect(InputAction.CallbackContext context)
     {
@@ -129,42 +80,12 @@ public class FoodCollect : MonoBehaviour
         CalculateSpeed(foodProperties.Weight);
     }
 
-    // Ancien code
-    /*private IEnumerator Collecting()
-    {
-        FoodProperties foodProperties = foodInRange.GetComponent<FoodProperties>();
-        float newFoodWeight = foodProperties.Weight;
-
-        // if (currentLoad - newFoodWeight < 0) yield break;
-
-        foodProperties.IsCollected();
-        mrPropreAnim.PickFoodAnim(foodProperties.FoodType);
-
-        yield return new WaitForSecondsRealtime(foodProperties.CollectTime);
-
-        foodProperties.StoppedCollected();
-
-        if (foodAtRange)
-        {
-            foodObject.Add(foodInRange);
-            foodInRange.SetActive(false);
-            foodInRange.transform.parent = foodPocket.transform;
-            foodInRange.transform.position = foodPocket.transform.position;
-            foodInRange.GetComponent<Rigidbody>().isKinematic = true;
-
-            CalculateSpeed(newFoodWeight);
-
-            EndCollecting();
-        }
-    }*/
-
     public void DropFood(InputAction.CallbackContext context)
     {
         if (foodInPocket.Count == 0 || !context.performed) return;
         GameObject lastFood = foodInPocket[^1];
         float lastFoodWeight = lastFood.GetComponent<FoodProperties>().Weight;
 
-        //lastFood.transform.localPosition = Vector3.zero; maybe to change position when you drop
         lastFood.transform.parent = null;
         lastFood.GetComponent<Rigidbody>().isKinematic = false;
         lastFood.GetComponent<FoodProperties>().CollectTime = 0.5f;

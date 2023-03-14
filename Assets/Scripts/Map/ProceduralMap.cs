@@ -143,6 +143,8 @@ public class ProceduralMap : MonoBehaviour
         } while (matrixMap[mrPropreX, mrPropreZ] != objectPrefabs.IndexOf(nothing));
 
         mrPropre.transform.position = new Vector3(mrPropreX, mrPropre.transform.position.y, mrPropreZ);
+        // TODO 
+        // if(SettingManager.SpawnAtFireCamp) spawn sur mr propre else spawn ailleurs sur la map (volontairement à une certaine distance minimum ?)
         rescueZone.transform.position = new Vector3(mrPropreX, rescueZone.transform.position.y, mrPropreZ);
 
         Vector3 mrRacinePos;
