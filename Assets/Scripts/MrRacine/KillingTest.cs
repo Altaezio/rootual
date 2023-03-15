@@ -12,10 +12,7 @@ public class KillingTest : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             PlayerInRange = true;
-            if (SettingManager.AtRangeVIbration)
-            {
-                SetControllerVibration.lowFrequency = .5f;
-            }
+            SetControllerVibration.lowFrequency = .5f;
         }
     }
     private void OnTriggerExit(Collider other)

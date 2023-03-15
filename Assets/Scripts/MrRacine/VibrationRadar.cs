@@ -15,10 +15,7 @@ public class VibrationRadar : MonoBehaviour
     private void FixedUpdate()
     {
         float vibrationLvl = VibrationPerAngle(GetAngleBetweenPlayers());
-        if (SettingManager.DirectionVibration)
-        {
-            SetControllerVibration.hightFrequency = vibrationLvl;
-        }
+        SetControllerVibration.hightFrequency = vibrationLvl;
     }
 
     private float GetAngleBetweenPlayers()

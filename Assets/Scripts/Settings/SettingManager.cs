@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class SettingManager : MonoBehaviour
 {
     [SerializeField] TMP_InputField timeLimitInputField, fruitQuantityInputField;
-    [SerializeField] Toggle fireCampSpawn, directionVibration, atRangeVibration;
+    [SerializeField] Toggle fireCampSpawnToggle, directionVibrationToggle, atRangeVibrationToggle;
 
     [SerializeField] int defaultTimeLimit, defaultFruitQuantity;
     [SerializeField] bool defaultFireCampSpawn, defaultDirectionVibration, defaultAtRangeVibration;
@@ -38,7 +38,7 @@ public class SettingManager : MonoBehaviour
         }
         else
         {
-            PlayerPrefs.SetInt(TIMELIMIT, defaultTimeLimit);
+            ResetToDefaultTimeLimit();
         }
 
         if (PlayerPrefs.HasKey(FRUITAMOUNTNEEDED))
@@ -47,35 +47,65 @@ public class SettingManager : MonoBehaviour
         }
         else
         {
-            PlayerPrefs.SetInt(FRUITAMOUNTNEEDED, defaultFruitQuantity);
+            ResetToDefaultFruitQuantity();
         }
 
         if (PlayerPrefs.HasKey(SPAWNATFIRECAMP))
         {
-            fireCampSpawn.isOn = PlayerPrefs.GetInt(SPAWNATFIRECAMP) == 1;
+            fireCampSpawnToggle.isOn = PlayerPrefs.GetInt(SPAWNATFIRECAMP) == 1;
         }
         else
         {
-            PlayerPrefs.SetInt(SPAWNATFIRECAMP, defaultFireCampSpawn ? 1 : 0);
+            ResetToDefaultSpawnAtFireCamp();
         }
 
         if (PlayerPrefs.HasKey(DIRECTIONVIBRATION))
         {
-            directionVibration.isOn = PlayerPrefs.GetInt(DIRECTIONVIBRATION) == 1;
+            directionVibrationToggle.isOn = PlayerPrefs.GetInt(DIRECTIONVIBRATION) == 1;
         }
         else
         {
-            PlayerPrefs.SetInt(DIRECTIONVIBRATION, defaultDirectionVibration ? 1 : 0);
+            ResetToDefaultDirectionVibration();
         }
 
         if (PlayerPrefs.HasKey(ATRANGEVIBRATION))
         {
-            atRangeVibration.isOn = PlayerPrefs.GetInt(ATRANGEVIBRATION) == 1;
+            atRangeVibrationToggle.isOn = PlayerPrefs.GetInt(ATRANGEVIBRATION) == 1;
         }
         else
         {
-            PlayerPrefs.SetInt(ATRANGEVIBRATION, defaultAtRangeVibration ? 1 : 0);
+            ResetToDefaultDirectionVibration();
         }
+    }
+
+    public void ResetToDefaultTimeLimit()
+    {
+        PlayerPrefs.SetInt(TIMELIMIT, defaultTimeLimit);
+        timeLimitInputField.text = defaultTimeLimit.ToString();
+    }
+
+    public void ResetToDefaultFruitQuantity()
+    {
+        PlayerPrefs.SetInt(FRUITAMOUNTNEEDED, defaultFruitQuantity);
+        fruitQuantityInputField.text = defaultFruitQuantity.ToString();
+    }
+
+    public void ResetToDefaultSpawnAtFireCamp()
+    {
+        PlayerPrefs.SetInt(SPAWNATFIRECAMP, defaultFireCampSpawn ? 1 : 0);
+        fireCampSpawnToggle.isOn = defaultFireCampSpawn;
+    }
+
+    public void ResetToDefaultDirectionVibration()
+    {
+        PlayerPrefs.SetInt(DIRECTIONVIBRATION, defaultDirectionVibration ? 1 : 0);
+        directionVibrationToggle.isOn = defaultDirectionVibration;
+    }
+
+    public void ResetToDefaultAtRangeVibration()
+    {
+        PlayerPrefs.SetInt(ATRANGEVIBRATION, defaultAtRangeVibration ? 1 : 0);
+        atRangeVibrationToggle.isOn = defaultAtRangeVibration;
     }
 
     public void ChangeTimeLimit(string newTimeLimit)

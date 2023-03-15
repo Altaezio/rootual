@@ -2403,8 +2403,7 @@ MonoBehaviour:
   DefaultMoveSpeed: 0.15
   MinMoveSpeed: 0.025
   rb: {fileID: 1087723143}
-  rotationSpeed: 5
-  currentMoveSpeed: 0
+  rotationSpeed: 1
 --- !u!114 &1087723146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4124,7 +4123,6 @@ MonoBehaviour:
   MinMoveSpeed: 0.05
   rb: {fileID: 2007078878}
   rotationSpeed: 0.2
-  currentMoveSpeed: 0
 --- !u!114 &2007078877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4179,6 +4177,18 @@ MonoBehaviour:
       - m_Target: {fileID: 2002389261}
         m_TargetAssemblyTypeName: MrPropreAnim, Assembly-CSharp
         m_MethodName: MoveAnim
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2007078884}
+        m_TargetAssemblyTypeName: Running, Assembly-CSharp
+        m_MethodName: Move
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4514,7 +4524,6 @@ MonoBehaviour:
   loseSpeed: 6
   getBackSpeed: 5
   waitBeforeGettingBack: 2
-  waitBeforeHidingFill: 0.5
   staminaFill: {fileID: 1036429716}
 --- !u!1 &2028835603
 GameObject:

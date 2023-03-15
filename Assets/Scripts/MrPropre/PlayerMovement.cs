@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private Rigidbody rb;
     [SerializeField] private float rotationSpeed;
-    [SerializeField] private float currentMoveSpeed;
+    private float currentMoveSpeed;
     private Vector2 move;
     private float rotation;
     private bool immobilized;
