@@ -7,18 +7,17 @@ using UnityEngine.UI;
 
 public class SettingManager : MonoBehaviour
 {
-    [SerializeField] TMP_InputField timeLimitInputField, fruitQuantityInputField;
-    [SerializeField] Toggle fireCampSpawnToggle, directionVibrationToggle, atRangeVibrationToggle;
+    [SerializeField] private TMP_InputField timeLimitInputField, fruitQuantityInputField;
+    [SerializeField] private Toggle fireCampSpawnToggle, directionVibrationToggle, atRangeVibrationToggle;
 
-    [SerializeField] int defaultTimeLimit, defaultFruitQuantity;
-    [SerializeField] bool defaultFireCampSpawn, defaultDirectionVibration, defaultAtRangeVibration;
+    [SerializeField] private int defaultTimeLimit, defaultFruitQuantity;
+    [SerializeField] private bool defaultFireCampSpawn, defaultDirectionVibration, defaultAtRangeVibration;
 
     const string TIMELIMIT = "TimeLimit";
     const string FRUITAMOUNTNEEDED = "FruitAmountNeeded";
     const string SPAWNATFIRECAMP = "SpawnAtTheFireCamp";
     const string DIRECTIONVIBRATION = "DirectionVibration";
     const string ATRANGEVIBRATION = "AtRangeVibration";
-
     public static int TimeLimit { get => PlayerPrefs.GetInt(TIMELIMIT); }
     public static int FruitAmountNeeded { get => PlayerPrefs.GetInt(FRUITAMOUNTNEEDED); }
     public static bool SpawnAtFireCamp { get => PlayerPrefs.GetInt(SPAWNATFIRECAMP) == 1; }

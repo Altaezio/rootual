@@ -312,8 +312,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 12:00
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ab7a3ce89e611504ea350b6cda0d37fc, type: 2}
+  m_sharedMaterial: {fileID: 4955086276022705876, guid: ab7a3ce89e611504ea350b6cda0d37fc, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -343,7 +343,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 16
+  m_fontStyle: 17
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -7114,7 +7114,6 @@ MonoBehaviour:
   MinMoveSpeed: 0.025
   rb: {fileID: 1087723143}
   rotationSpeed: 5
-  currentMoveSpeed: 0
 --- !u!114 &1087723146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8866,7 +8865,6 @@ MonoBehaviour:
   MinMoveSpeed: 0.05
   rb: {fileID: 2007078878}
   rotationSpeed: 0.2
-  currentMoveSpeed: 0
 --- !u!114 &2007078877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8892,78 +8890,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2007078876}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: Move
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2007078883}
-        m_TargetAssemblyTypeName: PlayerMovingSounds, Assembly-CSharp
-        m_MethodName: IsMoving
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2002389261}
-        m_TargetAssemblyTypeName: MrPropreAnim, Assembly-CSharp
-        m_MethodName: MoveAnim
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: e03af912-c2c7-4110-9117-f38cdeeaeb81
-    m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2007078876}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: Look
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: f3884987-0ef6-425e-8800-df255aa1eaf3
-    m_ActionName: Player/Look[/Mouse/delta]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2007078875}
-        m_TargetAssemblyTypeName: FoodCollect, Assembly-CSharp
-        m_MethodName: Collect
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 4762594d-068e-46a9-8f46-61601a8050d1
-    m_ActionName: Player/Fire[/Mouse/leftButton]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: deb1a39f-c351-47cf-8063-4ec43c25276c
@@ -9006,55 +8932,39 @@ MonoBehaviour:
     m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 3109d31c-f948-49d3-8079-aeed52f8a42c
-    m_ActionName: Player/Eat[/XInputControllerWindows/rightTrigger]
+    m_ActionId: 801de2ad-dd3e-4f27-bbb2-aeccf375bb45
+    m_ActionName: MrPropre/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2007078875}
-        m_TargetAssemblyTypeName: FoodCollect, Assembly-CSharp
-        m_MethodName: DropFood
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 83140355-efd4-4f90-a402-205ca2b260b7
-    m_ActionName: Player/Drop[/Mouse/rightButton]
+      m_Calls: []
+    m_ActionId: 26d3a2ab-4472-478a-a2a6-0eba911f528c
+    m_ActionName: MrPropre/Look[/Mouse/delta]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2007078884}
-        m_TargetAssemblyTypeName: Running, Assembly-CSharp
-        m_MethodName: Run
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2002389261}
-        m_TargetAssemblyTypeName: MrPropreAnim, Assembly-CSharp
-        m_MethodName: RunAnim
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 7c1e51e1-b70a-478f-8fa9-09f46092c618
-    m_ActionName: Player/Running[/Keyboard/leftShift]
+      m_Calls: []
+    m_ActionId: 80d5ab01-98fb-4b42-bc12-272ddcd577e6
+    m_ActionName: MrPropre/Collect[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 64847175-6c4b-4bba-a3b3-d1f714be1582
+    m_ActionName: MrPropre/Drop[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4406ef4c-c2f7-4ef1-8de4-72d4e9a6f95e
+    m_ActionName: MrPropre/Running[/Keyboard/leftShift]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0464cb86-7ae1-4ace-b09f-63044855882c
+    m_ActionName: MrRacine/Move
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0226ef0d-2847-4b29-82ed-d6924f74139d
+    m_ActionName: MrRacine/Look
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 98f1a89b-dd54-44b2-ae52-d3909c335ef5
+    m_ActionName: MrRacine/Eat
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Keyboard&Mouse
-  m_DefaultActionMap: Player
+  m_DefaultActionMap: MrPropre
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!54 &2007078878
@@ -9257,7 +9167,6 @@ MonoBehaviour:
   loseSpeed: 6
   getBackSpeed: 5
   waitBeforeGettingBack: 2
-  waitBeforeHidingFill: 0.5
   staminaFill: {fileID: 1036429716}
 --- !u!1 &2028835603
 GameObject:

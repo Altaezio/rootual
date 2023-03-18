@@ -87,9 +87,9 @@ public class Running : MonoBehaviour
         changeDirectionStamina = StartCoroutine(ChangeDirectionUpdate(true));
     }
 
-    private IEnumerator ChangeDirectionUpdate(bool shouldBePositiv)
+    private IEnumerator ChangeDirectionUpdate(bool shouldBePositive)
     {
-        if (!shouldBePositiv)
+        if (!shouldBePositive)
         {
             updateDirectionStamina = -1;
             if (updateStamina == null)

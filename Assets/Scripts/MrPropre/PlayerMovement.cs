@@ -8,7 +8,6 @@ public class PlayerMovement : MonoBehaviour
 {
     public float DefaultMoveSpeed;
     public float MinMoveSpeed;
-
     [SerializeField] private Rigidbody rb;
     [SerializeField] private float rotationSpeed;
     private float currentMoveSpeed;

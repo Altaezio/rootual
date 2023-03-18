@@ -19,8 +19,6 @@ public class LifeManagment : MonoBehaviour
             if (lives == 0)
             {
                 playerMovement.IsImmobilize(true);
-                // rb.constraints = RigidbodyConstraints.None;
-                // transform.Rotate(0, 0, 5);
                 mrPropreAnim.DeathAnim();
                 StartCoroutine(GameOver());
             }
