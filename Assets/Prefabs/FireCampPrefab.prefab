@@ -9956,8 +9956,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Pick fruits to get back to your clan.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ab7a3ce89e611504ea350b6cda0d37fc, type: 2}
-  m_sharedMaterial: {fileID: 4955086276022705876, guid: ab7a3ce89e611504ea350b6cda0d37fc, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
