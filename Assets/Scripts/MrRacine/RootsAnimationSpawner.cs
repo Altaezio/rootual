@@ -42,6 +42,7 @@ public class RootsAnimationSpawner : MonoBehaviour
     private void SpawnRoot(Vector3 position, Quaternion rotation)
     {
         GameObject root = Instantiate(rootAnimationPrefab[Random.Range(0, rootAnimationPrefab.Count)], position, rotation, rootParent);
+        root.SetActive(true);
         root.transform.localScale = new Vector3(Mathf.Sign(Random.value-.5f),root.transform.localScale.y, root.transform.localScale.z);
     }
 }
