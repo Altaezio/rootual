@@ -10,7 +10,7 @@ public class Running : MonoBehaviour
     public event Action<bool> ChangedSpeedToRunning;
 
     [SerializeField] private PlayerMovement playerMovement;
-    [SerializeField] private float runningRate, loseSpeed, getBackSpeed, waitBeforeGettingBack, waitBeforeHidingFill;
+    [SerializeField] private float runningRate, loseSpeed, getBackSpeed, waitBeforeGettingBack;
     [SerializeField] private Image staminaFill;
     private int maxStamina;
     private float currentStamina;
@@ -25,77 +25,98 @@ public class Running : MonoBehaviour
     }
     private bool CanRun
     {
-        get => currentStamina > 0;
+        get => currentStamina > 0 && isMoving;
     }
-    private bool isGettingBack;
 
-    private Coroutine up, down, countDown;
+    private bool isMoving;
+
+    private int updateDirectionStamina;
+
+    private Coroutine updateStamina, changeDirectionStamina;
 
     private void Start()
     {
         maxStamina = 10;
         CurrentStamina = maxStamina;
-        // staminaFill.transform.parent.gameObject.SetActive(false);
+        updateDirectionStamina = 1;
     }
 
     public void Run(InputAction.CallbackContext context)
     {
-        if (CanRun && context.performed)
+        if (context.performed)
         {
-            playerMovement.UpdateRelativeMoveSpeed(runningRate);
-            ChangedSpeedToRunning(true);
-            if (down != null)
-                StopCoroutine(down);
-            down = StartCoroutine(LoseStamina());
+            StartRunning();
         }
 
-        if (!isGettingBack && context.canceled)
+        if (context.canceled)
         {
-            if (up != null)
-                StopCoroutine(up);
-            up = StartCoroutine(GetItBack());
+            StopRunning();
         }
     }
 
-    private IEnumerator LoseStamina()
+    public void Move(InputAction.CallbackContext context)
     {
-        if (up != null)
-            StopCoroutine(up);
-        if (countDown != null)
-            StopCoroutine(countDown);
-        isGettingBack = false;
-        staminaFill.transform.parent.gameObject.SetActive(true);
-        while (CurrentStamina > 0)
+        isMoving = context.ReadValue<Vector2>().sqrMagnitude > 0.1f;
+        if (!isMoving)
         {
-            CurrentStamina -= Time.deltaTime * loseSpeed;
-            yield return new WaitForSeconds(Time.deltaTime);
+            StopRunning();
         }
-        up = StartCoroutine(GetItBack());
     }
 
-    private IEnumerator GetItBack()
+    private void StartRunning()
     {
-        if (down != null)
-            StopCoroutine(down);
-        isGettingBack = true;
+        if (!CanRun || updateDirectionStamina < 0) return;
+
+        playerMovement.UpdateRelativeMoveSpeed(runningRate);
+        ChangedSpeedToRunning(true);
+
+        if (changeDirectionStamina != null)
+            StopCoroutine(changeDirectionStamina);
+        changeDirectionStamina = StartCoroutine(ChangeDirectionUpdate(false));
+    }
+
+    private void StopRunning()
+    {
+        if (updateDirectionStamina >= 0) return;
+
         playerMovement.UpdateRelativeMoveSpeed(1 / runningRate);
         ChangedSpeedToRunning(false);
-        yield return new WaitForSeconds(waitBeforeGettingBack);
-        while (CurrentStamina < maxStamina)
+
+        if (changeDirectionStamina != null)
+            StopCoroutine(changeDirectionStamina);
+        changeDirectionStamina = StartCoroutine(ChangeDirectionUpdate(true));
+    }
+
+    private IEnumerator ChangeDirectionUpdate(bool shouldBePositive)
+    {
+        if (!shouldBePositive)
         {
-            CurrentStamina += Time.deltaTime * getBackSpeed;
+            updateDirectionStamina = -1;
+            if (updateStamina == null)
+            {
+                updateStamina = StartCoroutine(UpdateStamina());
+            }
+        }
+        else
+        {
+            updateDirectionStamina = 0;
+            yield return new WaitForSeconds(waitBeforeGettingBack);
+            updateDirectionStamina = 1;
+        }
+    }
+
+    private IEnumerator UpdateStamina()
+    {
+        while (CurrentStamina <= maxStamina)
+        {
+            CurrentStamina += updateDirectionStamina * Time.deltaTime * loseSpeed;
+            if (CurrentStamina <= 0 && updateDirectionStamina < 0)
+            {
+                StopRunning();
+            }
             yield return new WaitForSeconds(Time.deltaTime);
         }
         CurrentStamina = maxStamina;
-        isGettingBack = false;
-        if (countDown != null)
-            StopCoroutine(countDown);
-        // countDown = StartCoroutine(CountDownToHideFill());
-    }
-
-    private IEnumerator CountDownToHideFill()
-    {
-        yield return new WaitForSeconds(waitBeforeHidingFill);
-        staminaFill.transform.parent.gameObject.SetActive(false);
+        updateStamina = null;
     }
 }

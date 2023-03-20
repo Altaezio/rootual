@@ -10,7 +10,7 @@ public class PauseMenu : MonoBehaviour
 
     void Start()
     {
-        pauseMenu.SetActive(false);
+        ResumeGame();
     }
 
     void Update()
@@ -31,6 +31,7 @@ public class PauseMenu : MonoBehaviour
     public void PauseGame()
     {
         pauseMenu.SetActive(true);
+        Cursor.visible = true;
         AudioListener.pause = true;
         Time.timeScale = 0;
     }
@@ -38,6 +39,7 @@ public class PauseMenu : MonoBehaviour
     public void ResumeGame()
     {
         pauseMenu.SetActive(false);
+        Cursor.visible = false;
         AudioListener.pause = false;
         Time.timeScale = 1;
     }

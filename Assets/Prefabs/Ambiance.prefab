@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   source: {fileID: 3325381474540308999}
   map: {fileID: 0}
-  beginDelay: 0
+  beginDelay: 60
   maxDelayBetweenTwo: 0.5
   minHeight: 2
   maxHeight: 7
@@ -61,7 +61,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 3d64fdcd8e39af846b944d5a2f37283f, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 267f431eac1d9a14a8851629d3f46f9d, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.1
   m_Pitch: 1

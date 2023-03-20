@@ -12,10 +12,11 @@ public class EndGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating(nameof(decrementDuration), 1.0f, 1.0f);
+        gameDuration = SettingManager.TimeLimit;
+        InvokeRepeating(nameof(DecrementDuration), 1.0f, 1.0f);
     }
 
-    private void decrementDuration()
+    private void DecrementDuration()
     {
         gameDuration--;
         durationTMP.text = gameDuration/60 + ":" + gameDuration%60;

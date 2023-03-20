@@ -33,6 +33,9 @@ ModelImporter:
   - first:
       74: 1443493387379412838
     second: Armature|Standing 2
+  - first:
+      74: -2044750602165453626
+    second: Armature|StandingUp
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -281,11 +284,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|Standing 2
-      takeName: Armature|Standing 2
+      name: Armature|Standing
+      takeName: Armature|Standing
       internalID: 0
       firstFrame: 0
-      lastFrame: 8
+      lastFrame: 180
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -310,11 +313,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|Standing
-      takeName: Armature|Standing
+      name: Armature|StandingUp
+      takeName: Armature|StandingUp
       internalID: 0
       firstFrame: 0
-      lastFrame: 6
+      lastFrame: 83
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
