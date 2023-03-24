@@ -85,35 +85,36 @@ public class ProceduralMap : MonoBehaviour
     {
         // Rocks
         float rockStep = 1.3f; // espacement entre 2 rochers
-        int lowerBound = -2;
-        int higherBound = width + 2;
-        for (float x = lowerBound; x < higherBound; x += rockStep)
+        int lwRockBound = -2;
+        int hgRockBound = width + 2;
+        for (float x = lwRockBound; x < hgRockBound; x += rockStep)
         {
-            SpawnElement(x, lowerBound, rocks[Random.Range(0, rocks.Count)]);
-            SpawnElement(x, higherBound, rocks[Random.Range(0, rocks.Count)]);
+            SpawnElement(x, lwRockBound, rocks[Random.Range(0, rocks.Count)]);
+            SpawnElement(x, hgRockBound, rocks[Random.Range(0, rocks.Count)]);
         }
-        for (float z = lowerBound + 1; z < higherBound - 1; z += rockStep)
+        for (float z = lwRockBound + 1; z < hgRockBound - 1; z += rockStep)
         {
-            SpawnElement(lowerBound, z, rocks[Random.Range(0, rocks.Count)]);
-            SpawnElement(higherBound, z, rocks[Random.Range(0, rocks.Count)]);
+            SpawnElement(lwRockBound, z, rocks[Random.Range(0, rocks.Count)]);
+            SpawnElement(hgRockBound, z, rocks[Random.Range(0, rocks.Count)]);
         }
 
         // Far Trees
-        int padding = 1; // espacement rocher/arbre
         int treeStep = 2; // espacement entre 2 arbres
-        for (int x = lowerBound - padding; x < higherBound + padding; x += treeStep)
+        int lwTreeBound = lwRockBound - 2;
+        int hgTreeBound = hgRockBound + 2;
+        for (int x = lwTreeBound; x < hgTreeBound; x += treeStep)
         {
-            SpawnElement(x, lowerBound - padding, borderTrees[Random.Range(0, borderTrees.Count)]);
-            SpawnElement(x - treeStep, lowerBound - padding - 1, borderTrees[Random.Range(0, borderTrees.Count)]);
-            SpawnElement(x, higherBound + padding, borderTrees[Random.Range(0, borderTrees.Count)]);
-            SpawnElement(x + treeStep, higherBound + padding + 1, borderTrees[Random.Range(0, borderTrees.Count)]);
+            SpawnElement(x, lwTreeBound - treeStep, borderTrees[Random.Range(0, borderTrees.Count)]);
+            SpawnElement(x, lwTreeBound, borderTrees[Random.Range(0, borderTrees.Count)]);
+            SpawnElement(x, hgTreeBound + treeStep, borderTrees[Random.Range(0, borderTrees.Count)]);
+            SpawnElement(x, hgTreeBound, borderTrees[Random.Range(0, borderTrees.Count)]);
         }
-        for (int z = lowerBound - padding + 1; z < higherBound + padding - 1; z += treeStep)
+        for (int z = lwTreeBound; z < hgTreeBound; z += treeStep)
         {
-            SpawnElement(lowerBound - padding, z, borderTrees[Random.Range(0, borderTrees.Count)]);
-            SpawnElement(lowerBound - padding - 1, z - treeStep, borderTrees[Random.Range(0, borderTrees.Count)]);
-            SpawnElement(higherBound + padding, z, borderTrees[Random.Range(0, borderTrees.Count)]);
-            SpawnElement(higherBound + padding + 1, z + treeStep, borderTrees[Random.Range(0, borderTrees.Count)]);
+            SpawnElement(lwTreeBound - treeStep, z, borderTrees[Random.Range(0, borderTrees.Count)]);
+            SpawnElement(lwTreeBound, z, borderTrees[Random.Range(0, borderTrees.Count)]);
+            SpawnElement(hgTreeBound + treeStep, z, borderTrees[Random.Range(0, borderTrees.Count)]);
+            SpawnElement(hgTreeBound, z, borderTrees[Random.Range(0, borderTrees.Count)]);
         }
     }
 

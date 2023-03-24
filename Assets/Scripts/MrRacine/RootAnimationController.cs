@@ -14,6 +14,7 @@ public class RootAnimationController : MonoBehaviour
 
     public void DestroysSelf()
     {
-        Destroy(gameObject);
+        // Destroy(gameObject);
+        this.gameObject.SetActive(false);
     }
 }

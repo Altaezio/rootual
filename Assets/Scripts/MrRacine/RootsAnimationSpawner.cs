@@ -6,16 +6,28 @@ public class RootsAnimationSpawner : MonoBehaviour
 {
     [SerializeField] private Transform rootParent;
     [SerializeField] private List<GameObject> rootAnimationPrefab = new();
-    [SerializeField]
-    private float minDelayBetweenRootSpawn, maxDelayBetweenRootSpawn,
+    [SerializeField] private float minDelayBetweenRootSpawn, maxDelayBetweenRootSpawn,
         distanceThresholdForRandom, maxDistanceSpawnFromCenter,
         minRandomScale, maxRandomScale,
         alignedRandomRotationOffset;
-
     private Vector3 lastPosition;
+    private int rootNb = 8;
+    [SerializeField] private List<GameObject> rootList = new List<GameObject>();
 
     private void Start()
     {
+        for (int i = 0; i < rootNb; i++)
+        {
+            GameObject root;
+            if(i % 2 == 0){
+                root = Instantiate(rootAnimationPrefab[0], rootParent);
+            }else{
+                root = Instantiate(rootAnimationPrefab[1], rootParent);
+            }
+            root.SetActive(false);
+            rootList.Add(root);
+        }
+
         InvokeRepeating(nameof(SpawnRootLoop), 0, Random.Range(minDelayBetweenRootSpawn, maxDelayBetweenRootSpawn));
     }
 
@@ -41,8 +53,20 @@ public class RootsAnimationSpawner : MonoBehaviour
 
     private void SpawnRoot(Vector3 position, Quaternion rotation)
     {
-        GameObject root = Instantiate(rootAnimationPrefab[Random.Range(0, rootAnimationPrefab.Count)], position, rotation, rootParent);
-        root.SetActive(true);
-        root.transform.localScale = new Vector3(Mathf.Sign(Random.value-.5f),root.transform.localScale.y, root.transform.localScale.z);
+        // GameObject root = Instantiate(rootAnimationPrefab[Random.Range(0, rootAnimationPrefab.Count)], position, rotation, rootParent);
+        GameObject root = null;
+        for (int i = 0; i < rootList.Count; i++)
+        {
+            if(!rootList[i].activeSelf){
+                root = rootList[i];
+            }
+        }
+
+        if(root != null){
+            root.transform.position = position;
+            root.transform.rotation = rotation;
+            root.transform.localScale = new Vector3(Mathf.Sign(Random.value-.5f),root.transform.localScale.y, root.transform.localScale.z);
+            root.SetActive(true);
+        }
     }
 }
