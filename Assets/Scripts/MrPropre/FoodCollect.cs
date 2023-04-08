@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using TMPro;
 
 public class FoodCollect : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class FoodCollect : MonoBehaviour
     [SerializeField] private float maxLoad;
     public float currentLoad;
     [SerializeField] private Image fillFoodBar;
+    [SerializeField] private TextMeshProUGUI loadTmp;
 
     private void Start()
     {
@@ -101,6 +103,7 @@ public class FoodCollect : MonoBehaviour
         CheckMaxLoad();
 
         fillFoodBar.fillAmount = currentLoad / maxLoad;
+        loadTmp.text = currentLoad + " / 30";
         float speed = Mathf.Clamp(((mrPropreMovement.MinMoveSpeed - mrPropreMovement.DefaultMoveSpeed) * currentLoad) / maxLoad + mrPropreMovement.DefaultMoveSpeed, mrPropreMovement.MinMoveSpeed, mrPropreMovement.DefaultMoveSpeed);
         mrPropreMovement.UpdateMoveSpeed(speed);
     }

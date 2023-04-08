@@ -19,11 +19,7 @@ public class RootsAnimationSpawner : MonoBehaviour
         for (int i = 0; i < rootNb; i++)
         {
             GameObject root;
-            if(i % 2 == 0){
-                root = Instantiate(rootAnimationPrefab[0], rootParent);
-            }else{
-                root = Instantiate(rootAnimationPrefab[1], rootParent);
-            }
+            root = Instantiate(rootAnimationPrefab[Random.Range(0, rootAnimationPrefab.Count)], rootParent);
             root.SetActive(false);
             rootList.Add(root);
         }

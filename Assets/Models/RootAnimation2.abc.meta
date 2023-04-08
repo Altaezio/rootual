@@ -11,7 +11,7 @@ ScriptedImporter:
   rootGameObjectId: 
   rootGameObjectName: 
   streamSettings:
-    normals: 1
+    normals: 0
     tangents: 1
     cameraAspectRatio: 2
     importVisibility: 1
@@ -23,7 +23,7 @@ ScriptedImporter:
     importLinePolygon: 1
     importTrianglePolygon: 1
     importXform: 1
-    importCameras: 1
+    importCameras: 0
     importMeshes: 1
     importPoints: 0
     importCurves: 1
